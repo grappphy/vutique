@@ -1,0 +1,55 @@
+// 브레이크 포인트 뷰포트 크기 및 미디어 쿼리.
+//
+// 작은 구간부터 큰 구간까지 순서로 된 (이름: 최소 너비) 맵으로 정의.
+// (xs: 0, sm: 768px, md: 1024px, lg: 1440px)
+//
+// '$grid-breakpoints' 전역 변수에 정의된 맵은 기본적으로 '$breakpoints' 인수로 사용.
+
+// 인자로 입력한 브레이크 포인트의 다음 브레이크 포인트 이름 반환, 마지막 브레이크 포인트의 경우 null 반환.
+//
+// >> vu-breakpoint-next(sm)
+// md
+// >> vu-breakpoint-next(md, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
+// lg
+// >> vu-breakpoint-next(lg, $breakpoint-names: (xs sm md lg))
+// null
+@function vu-breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @if not $n {
+    @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+  }
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+// 인자로 입력한 브레이크 포인트의 최소 너비 반환, 가장 작은(첫 번째) 브레이크 포인트의 null 반환
+//
+// >> vu-breakpoint-min(sm, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
+// 768px
+@function vu-breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+// 인자로 입력한 브레이크 포인트의 최대 너비 반환.
+// 최대값은 0.02px 감소하여 'min-' 및 'max-' 접두사 부분 너비의 뷰포트 한계 해결.
+// https://www.w3.org/TR/mediaqueries-4/#mq-min-max
+// 사파리 브라우저에서 라운딩 버그를 해결하기 위해 0.01px가 아닌 0.02px 사용.
+// https://bugs.webkit.org/show_bug.cgi?id=178261
+//
+// >> vu-breakpoint-max(md, (xs: 0, xs: 0, sm: 768px, md: 1024px, lg: 1440px))
+// 1023.98px
+@function vu-breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+// 가장 작은 브레이크 포인트인 경우 빈 문자열을 반환하고, 그렇지 않으면 이름을 앞에 대시( - )로 반환.
+// 반응형 유틸리티 제작 시 유용.
+//
+// >> vu-breakpoint-infix(xs, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
+// "" (빈 문자열 반환)
+// >> vu-breakpoint-infix(sm, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
+// "-sm"
+@function vu-breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+  @return if(vu-breakpoint-min($name, $breakpoints) == null, "", "#{$name + \@}");
+}

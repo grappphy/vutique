@@ -1,0 +1,29 @@
+@function vu-rem($values...) {
+  $rem: null;
+
+  @for $i from 1 through length($values) {
+    $value: nth($values, $i);
+    $space: " ";
+
+    @if $i == length($values) {
+      $space: "";
+    }
+
+    @if $value == 0 {
+      $rem: $rem + 0 + $space;
+    }
+    @else if $value == auto {
+      $rem: $rem + auto + $space;
+    }
+    @else if type-of($value) == number {
+      @if($browser-unit == rem) {
+        $rem: $rem + (math.div($value, $browser-context) + rem + $space);
+      }
+      @else {
+        $rem: $rem + $value + px + $space;
+      }
+    }
+  }
+  
+  @return $rem;
+}
