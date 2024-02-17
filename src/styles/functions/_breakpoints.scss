@@ -14,11 +14,13 @@
 // >> vu-breakpoint-next(lg, $breakpoint-names: (xs sm md lg))
 // null
 @function vu-breakpoint-next($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
-  $n: index($breakpoint-names, $name);
-  @if not $n {
-    @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
-  }
-  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+    $n: index($breakpoint-names, $name);
+    
+    @if not $n {
+        @error "breakpoint `#{$name}` not found in `#{$breakpoints}`";
+    }
+
+    @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
 // 인자로 입력한 브레이크 포인트의 최소 너비 반환, 가장 작은(첫 번째) 브레이크 포인트의 null 반환
@@ -26,8 +28,9 @@
 // >> vu-breakpoint-min(sm, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
 // 768px
 @function vu-breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-  $min: map-get($breakpoints, $name);
-  @return if($min != 0, $min, null);
+    $min: map-get($breakpoints, $name);
+    
+    @return if($min != 0, $min, null);
 }
 
 // 인자로 입력한 브레이크 포인트의 최대 너비 반환.
@@ -39,8 +42,9 @@
 // >> vu-breakpoint-max(md, (xs: 0, xs: 0, sm: 768px, md: 1024px, lg: 1440px))
 // 1023.98px
 @function vu-breakpoint-max($name, $breakpoints: $grid-breakpoints) {
-  $max: map-get($breakpoints, $name);
-  @return if($max and $max > 0, $max - .02, null);
+    $max: map-get($breakpoints, $name);
+
+    @return if($max and $max > 0, $max - .02, null);
 }
 
 // 가장 작은 브레이크 포인트인 경우 빈 문자열을 반환하고, 그렇지 않으면 이름을 앞에 대시( - )로 반환.
@@ -51,5 +55,5 @@
 // >> vu-breakpoint-infix(sm, (xs: 0, sm: 768px, md: 1024px, lg: 1440px))
 // "-sm"
 @function vu-breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return if(vu-breakpoint-min($name, $breakpoints) == null, "", "#{$name + \@}");
+    @return if(vu-breakpoint-min($name, $breakpoints) == null, "", "#{$name + \@}");
 }

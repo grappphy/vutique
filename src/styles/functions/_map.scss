@@ -1,54 +1,60 @@
 @function vu-map-get-key($map, $index) {
-  @if (index == 0) {
-    @return null;
-  }
-  @else {
-    $keys: map-keys($map);
+    @if (index == 0) {
+        @return null;
+    }
+    @else {
+        $keys: map-keys($map);
 
-    @return if($index == last, nth($keys, -1), nth($keys, $index));
-  }
+        @return if($index == last, nth($keys, -1), nth($keys, $index));
+    }
 }
 
 
 @function vu-map-get-value($map, $index) {
-  @if (index == 0) {
-    @return null;
-  }
-  @else {
-    $value: map-values($map);
+    @if (index == 0) {
+        @return null;
+    }
+    @else {
+        $value: map-values($map);
 
-    @return if($index == last, nth($value, -1), nth($value, $index));
-  }
+        @return if($index == last, nth($value, -1), nth($value, $index));
+    }
 }
 
 // 다중 키 반환
 @function vu-map-get-multiple($map, $values) {
-  $result: ();
-  @each $key, $value in $map {
-    @if (index($values, $key) != null) {
-      $result: map-merge($result, ($key: $value));
+    $result: ();
+
+    @each $key, $value in $map {
+        @if (index($values, $key) != null) {
+            $result: map-merge($result, ($key: $value));
+        }
     }
-  }
-  @return $result;
+
+    @return $result;
 }
 
 // 다중 맵 병합
 @function vu-map-merge-multiple($maps...) {
   $result: ();
+
   @each $map in $maps {
-    $result: map-merge($result, $map)
+      $result: map-merge($result, $map)
   }
+
   @return $result;
 }
 
 // 맵의 값 음수 변환
 // 각 키에 "-" 접두어 추가
 @function vu-negativify-map($map) {
-  $result: ();
-  @each $key, $value in $map {
-    @if $key != "0" {
-      $result: map-merge($result, ($key: (-$value)));
+    $result: ();
+    
+    @each $key, $value in $map {
+        @if $key != "0" {
+            $result: map-merge($result, ($key: (-$value)));
+        }
     }
-  }
-  @return $result;
+
+    @return $result;
 }
