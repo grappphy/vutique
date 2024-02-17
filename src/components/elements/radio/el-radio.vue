@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-radio",
+    name: 'vu-el-radio',
     props: {
         /**
          * 크기
@@ -118,7 +118,7 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const classes = computed(() => {
-            const defaultClass = "vu-radio";
+            const defaultClass = 'vu-radio';
 
             const sizeClass = props.size ? `${defaultClass}{${props.size}}` : null;
 
@@ -133,12 +133,12 @@ export default defineComponent({
 
         // 컨트롤 클릭
         function controlClickHandler(event: Event): void {
-            emit("on-click", (event.target as HTMLFormElement).checked, event);
+            emit('on-click', (event.target as HTMLFormElement).checked, event);
         }
 
         // 컨트롤 변경
         function controlChangeHandler(event: Event): void {
-            emit("on-change", (event.target as HTMLFormElement).checked, event);
+            emit('on-change', (event.target as HTMLFormElement).checked, event);
         }
 
         return {

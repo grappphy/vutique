@@ -45,10 +45,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, Ref } from "vue";
+import { defineComponent, ref, computed, Ref } from 'vue';
 
 // Elements
-import VuElIcon from "../icon/el-icon.vue";
+import VuElIcon from '../icon/el-icon.vue';
 
 export default defineComponent({
     components: {
@@ -174,7 +174,7 @@ export default defineComponent({
 
         // 클래스
         const classes = computed(() => {
-            const defaultClass = "vu-textarea";
+            const defaultClass = 'vu-textarea';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
@@ -198,27 +198,27 @@ export default defineComponent({
 
         // 컨트롤 키다운
         function controlKeydownHandler(event: Event): void {
-            emit("on-keydown", (event.target as HTMLFormElement)?.value, event);
+            emit('on-keydown', (event.target as HTMLFormElement)?.value, event);
         }
 
         // 컨트롤 변경
         function controlChangeHandler(event: Event): void {
-            emit("on-change", (event.target as HTMLFormElement)?.value, event);
+            emit('on-change', (event.target as HTMLFormElement)?.value, event);
         }
 
         // 컨트롤 포커스
         function controlFocusHandler(event: Event): void {
-            emit("on-focus", (event.target as HTMLFormElement)?.value, event);
+            emit('on-focus', (event.target as HTMLFormElement)?.value, event);
         }
 
         // 컨트롤 블러
         function controlBlurHandler(event: Event): void {
-            emit("on-blur", (event.target as HTMLFormElement)?.value, event);
+            emit('on-blur', (event.target as HTMLFormElement)?.value, event);
         }
 
         // 클리어 버튼 클릭
         function clearButtonClickHandler(event: Event): void {
-            emit("on-clear-button-click", (event.target as HTMLFormElement)?.value, event, controlRef.value);
+            emit('on-clear-button-click', (event.target as HTMLFormElement)?.value, event, controlRef.value);
         }
 
         return {

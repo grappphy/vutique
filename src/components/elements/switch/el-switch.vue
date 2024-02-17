@@ -22,10 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-switch",
+    name: 'vu-el-switch',
     props: {
         /**
          * 크기
@@ -126,13 +126,13 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const classes = computed(() => {
-            const defaultClass = "vu-switch";
+            const defaultClass = 'vu-switch';
 
             const sizeClass = props.size ? `${defaultClass}{${props.size}}` : null;
 
             const alignClass = props.align ? `${defaultClass}{align-${props.align}}` : null;
 
-            const reverseClass = props.useReverse ? `${defaultClass}{reverse}` : "";
+            const reverseClass = props.useReverse ? `${defaultClass}{reverse}` : '';
 
             const readonlyClass = props.isReadonly ? `${defaultClass}:readonly` : null;
 
@@ -143,12 +143,12 @@ export default defineComponent({
 
         // 컨트롤 클릭
         function controlClickHandler(event: Event): void {
-            emit("on-click", (event.target as HTMLFormElement).checked, event);
+            emit('on-click', (event.target as HTMLFormElement).checked, event);
         }
 
         // 컨트롤 변경
         function controlChangeHandler(event: Event): void {
-            emit("on-change", (event.target as HTMLFormElement).checked, event);
+            emit('on-change', (event.target as HTMLFormElement).checked, event);
         }
 
         return {

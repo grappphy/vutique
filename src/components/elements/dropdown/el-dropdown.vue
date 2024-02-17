@@ -9,10 +9,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-dropdown",
+    name: 'vu-el-dropdown',
     props: {
         /**
          * 유형
@@ -49,7 +49,7 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() => {
-            const defaultClass = "vu-dropdown";
+            const defaultClass = 'vu-dropdown';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 

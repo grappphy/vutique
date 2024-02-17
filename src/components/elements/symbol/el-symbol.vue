@@ -12,10 +12,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-symbol",
+    name: 'vu-el-symbol',
     props: {
         /**
          * 유형
@@ -53,7 +53,7 @@ export default defineComponent({
     setup(props, { emit }) {
         // 클래스
         const classes = computed(() => {
-            const defaultClass = "vu-symbol";
+            const defaultClass = 'vu-symbol';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
@@ -68,7 +68,7 @@ export default defineComponent({
 
         // 아이콘 클래스
         const iconClasses = computed(() => {
-            const defaultClass = "vu-symbol-icon";
+            const defaultClass = 'vu-symbol-icon';
 
             const strokeClass = props.useStroke ? `${defaultClass}{stroke}` : null;
 
@@ -77,7 +77,7 @@ export default defineComponent({
 
         // 썸네일 클래스
         const thumbnailClasses = computed(() => {
-            const defaultClass = "vu-symbol-thumbnail";
+            const defaultClass = 'vu-symbol-thumbnail';
 
             const strokeClass = props.useStroke ? `${defaultClass}{stroke}` : null;
 
@@ -86,7 +86,7 @@ export default defineComponent({
 
         // 클릭
         function clickHandler(): void {
-            emit("on-click");
+            emit('on-click');
         }
 
         return {

@@ -21,14 +21,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 // Elements
-import VuElIcon from "../icon/el-icon.vue";
-import VuElText from "../text/el-text.vue";
+import VuElIcon from '../icon/el-icon.vue';
+import VuElText from '../text/el-text.vue';
 
 export default defineComponent({
-    name: "vu-el-dropdown-button",
+    name: 'vu-el-dropdown-button',
     components: {
         VuElIcon,
         VuElText
@@ -70,7 +70,7 @@ export default defineComponent({
     setup(props, { emit }) {
         // 버튼 클릭
         function clickHandler(): void {
-            emit("on-click");
+            emit('on-click');
         }
 
         return {

@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent } from 'vue';
 
 // Elements
-import VuElMenuItem from "../menu/el-menu-item.vue";
+import VuElMenuItem from '../menu/el-menu-item.vue';
 
 export default defineComponent({
-    name: "vu-el-dropdown-menu-item",
+    name: 'vu-el-dropdown-menu-item',
     components: {
         VuElMenuItem
     },
@@ -27,7 +27,7 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() => {
-            const defaultClass = "vu-dropdown-menu-item";
+            const defaultClass = 'vu-dropdown-menu-item';
 
             const activeClass = props.isActive ? `${defaultClass}:active` : null;
 

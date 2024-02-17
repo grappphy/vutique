@@ -34,15 +34,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 // Elements
-import VuElIcon from "../icon/el-icon.vue";
-import VuElText from "../text/el-text.vue";
-import VuElA11y from "../a11y/el-a11y.vue";
+import VuElIcon from '../icon/el-icon.vue';
+import VuElText from '../text/el-text.vue';
+import VuElA11y from '../a11y/el-a11y.vue';
 
 export default defineComponent({
-    name: "vu-el-chip",
+    name: 'vu-el-chip',
     components: {
         VuElIcon,
         VuElText,
@@ -157,7 +157,7 @@ export default defineComponent({
     setup(props, { emit }) {
         // 클래스
         const classes = computed(() => {
-            const defaultClass = "vu-chip";
+            const defaultClass = 'vu-chip';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
@@ -172,12 +172,12 @@ export default defineComponent({
 
         // 클릭
         function clickHandler(event: Event): void {
-            emit("on-click", event);
+            emit('on-click', event);
         }
 
         // 삭제
         function deleteHandler(event: Event): void {
-            emit("on-delete", event);
+            emit('on-delete', event);
         }
 
         return {

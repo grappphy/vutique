@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-icon",
+    name: 'vu-el-icon',
     props: {
         /**
          * 크기
@@ -37,7 +37,7 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() => {
-            const defaultClass = "vu-icon";
+            const defaultClass = 'vu-icon';
 
             const sizeClass = props.size ? `${defaultClass}{${props.size}}` : null;
 
