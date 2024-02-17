@@ -30,14 +30,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 // Elements
-import VuElText from "../text/el-text.vue";
-import VuElIcon from "../icon/el-icon.vue";
+import VuElText from '../text/el-text.vue';
+import VuElIcon from '../icon/el-icon.vue';
 
 export default defineComponent({
-    name: "vu-el-button",
+    name: 'vu-el-button',
     components: {
         VuElText,
         VuElIcon
@@ -142,7 +142,7 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const classes = computed(() => {
-            const defaultClass = "vu-button";
+            const defaultClass = 'vu-button';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
@@ -158,23 +158,23 @@ export default defineComponent({
         });
 
         function clickHandler(event: Event): void {
-            emit("on-click", event);
+            emit('on-click', event);
         }
 
         function mouseenterHandler(event: Event): void {
-            emit("on-mouseenter", event);
+            emit('on-mouseenter', event);
         }
 
         function mouseleaveHandler(event: Event): void {
-            emit("on-mouseleave", event);
+            emit('on-mouseleave', event);
         }
 
         function mousedownHandler(event: Event): void {
-            emit("on-mousedown", event);
+            emit('on-mousedown', event);
         }
 
         function mouseupHandler(event: Event): void {
-            emit("on-mouseup", event);
+            emit('on-mouseup', event);
         }
 
         return {

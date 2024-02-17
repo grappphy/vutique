@@ -7,10 +7,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 export default defineComponent({
-    name: "vu-el-text",
+    name: 'vu-el-text',
     props: {
         /**
          * 유형
@@ -55,7 +55,7 @@ export default defineComponent({
     },
     setup(props) {
         const classes = computed(() => {
-            const defaultClass = "vu-text";
+            const defaultClass = 'vu-text';
 
             const tyepClass = props.type ? `${defaultClass}:${props.type}` : null;
 

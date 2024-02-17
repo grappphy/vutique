@@ -72,13 +72,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from "vue";
+import { defineComponent, computed } from 'vue';
 
 // Elements
-import VuElButtons from "../buttons/el-buttons.vue";
+import VuElButtons from '../buttons/el-buttons.vue';
 
 export default defineComponent({
-    name: "vu-el-dialog",
+    name: 'vu-el-dialog',
     components: {
         VuElButtons
     },
@@ -142,22 +142,22 @@ export default defineComponent({
     },
     setup(props, { emit }) {
         const classes = computed(() => {
-            const defaultClass = "vu-dialog";
+            const defaultClass = 'vu-dialog';
 
             const typeClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
             const sizeClass = props.size ? `${defaultClass}{${props.size}}` : null;
 
-            const footerlessClass = props.useFooterless ? `${defaultClass}{footerless}` : "";
+            const footerlessClass = props.useFooterless ? `${defaultClass}{footerless}` : '';
 
-            const paddinglessClass = props.usePaddingless ? `${defaultClass}{paddingless}` : "";
+            const paddinglessClass = props.usePaddingless ? `${defaultClass}{paddingless}` : '';
 
             return [defaultClass, typeClass, sizeClass, footerlessClass, paddinglessClass];
         });
 
         // 클릭
         function clickHandler(event: Event): void {
-            emit("on-click", event);
+            emit('on-click', event);
         }
 
         return {

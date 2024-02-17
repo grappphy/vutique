@@ -9,20 +9,20 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 // Elements
-import VuElMenuButton from "../menu/el-menu-button.vue";
+import VuElMenuButton from '../menu/el-menu-button.vue';
 
 export default defineComponent({
-    name: "vu-el-dropdown-menu-button",
+    name: 'vu-el-dropdown-menu-button',
     components: {
         VuElMenuButton
     },
     setup(props, { emit }) {
         // 버튼 클릭
         function clickHandler(): void {
-            emit("on-click");
+            emit('on-click');
         }
 
         return {

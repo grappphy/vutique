@@ -11,13 +11,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from 'vue';
 
 // Elements
-import VuElMenu from "../menu/el-menu.vue";
+import VuElMenu from '../menu/el-menu.vue';
 
 export default defineComponent({
-    name: "vu-el-dropdown-menu",
+    name: 'vu-el-dropdown-menu',
     components: {
         VuElMenu
     },
