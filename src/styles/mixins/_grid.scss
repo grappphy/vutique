@@ -1,0 +1,126 @@
+@use "sass:math";
+
+@mixin vu-make-row-ready() {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--vu-gutter-y) * -1);
+    margin-right: calc(var(--vu-gutter-x) * -.5);
+    margin-left: calc(var(--vu-gutter-x) * -.5);
+}
+
+@mixin vu-make-col-ready() {
+    flex-shrink: 0;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding-right: calc(var(--vu-gutter-x) * .5);
+    padding-left: calc(var(--vu-gutter-x) * .5);
+    margin-top: var(--vu-gutter-y);
+    box-sizing: if(variable-exists(include-column-box-sizing) and $include-column-box-sizing, border-box, null);
+}
+
+@mixin vu-make-col($size: false, $columns: $vu-grid-columns) {
+    @if $size {
+        flex: 0 0 auto;
+        width: percentage(math.div($size, $columns));
+    }
+    @else {
+        flex: 1 1 0%;
+        max-width: 100%;
+    }
+}
+
+@mixin vu-make-col-auto() {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+@mixin vu-make-col-offset($size, $columns: $vu-grid-columns) {
+    $num: math.div($size, $columns);
+    margin-left: if($num == 0, 0, percentage($num));
+}
+
+@mixin vu-make-row-cols($count) {
+    > * {
+        flex: 0 0 auto;
+        width: math.div(100%, $count);
+    }
+}
+
+@mixin vu-make-grid-classes($columns: $vu-grid-columns, $breakpoints: $vu-grid-breakpoints, $prefix: "#{$vu-variable-prefix}") {
+    @if $vu-enable-responsive-grid-classes {
+        $prev-gutter: null;
+
+        @each $breakpoint in map-keys($breakpoints) {
+            $infix: vu-breakpoint-infix($breakpoint, $breakpoints);
+
+            @include media-breakpoint-up($breakpoint, $breakpoints) {
+                @if $prev-gutter != map-get($vu-grid-gutters, $breakpoint) {
+                    @include vu-make-row-classes(map-get($vu-grid-gutters, $breakpoint), 0, $prefix);
+
+                    $prev-gutter: map-get($vu-grid-gutters, $breakpoint);
+                }
+
+                @include vu-make-col-classes($columns, $infix, $prefix);
+            }
+        }
+    }
+    @else {
+        @include vu-make-row-classes(map-get-value($vu-grid-gutters, 1), 0, $prefix);
+        @include vu-make-col-classes($columns, $prefix);
+    }
+
+    @if $vu-enable-row-cols-classes {
+        @if $vu-enable-responsive-row-cols-classes {
+            @each $breakpoint in map-keys($breakpoints) {
+                $infix: vu-breakpoint-infix($breakpoint, $breakpoints);
+                
+                @include vu-media-breakpoint-up($breakpoint, $breakpoints) {
+                    @include vu-make-row-cols-classes($columns, $infix, $prefix);
+                }
+            }
+        }
+        @else {
+            @include vu-make-row-cols-classes($columns, $prefix);
+        }
+    }
+}
+
+@mixin vu-make-row-classes($gutter-x, $gutter-y, $prefix: "#{$vu-variable-prefix}") {
+    .#{$prefix}row {
+        --vu-gutter-x: #{$gutter-x};
+        --vu-gutter-y: #{$gutter-y};
+    }
+}
+
+@mixin vu-make-col-classes($columns: $vu-grid-columns, $infix: "", $prefix: "#{$vu-variable-prefix}") {
+    .#{$infix}#{$prefix}col {
+        flex: 1 0 0%;
+    }
+
+    .#{$infix}#{$prefix}col-auto {
+        @include vu-make-col-auto();
+    }
+
+    @if $columns > 0 {
+        @for $i from 1 through $columns {
+            .#{$infix}#{$prefix}col-#{$i} {
+                @include vu-make-col($i, $columns);
+            }
+        }
+    }
+}
+
+@mixin vu-make-row-cols-classes($columns: $vu-grid-columns, $infix: "", $prefix: "#{$vu-variable-prefix}") {
+    .#{$infix}#{$prefix}row-cols-auto > * {
+        @include vu-make-col-auto();
+    }
+
+    @if $vu-grid-row-columns > 0 {
+        @for $i from 1 through $vu-grid-row-columns {
+            .#{$infix}#{$prefix}row-cols-#{$i} {
+                @include vu-make-row-cols($i);
+            }
+        }
+    }
+}

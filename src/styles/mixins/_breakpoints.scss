@@ -1,0 +1,85 @@
+// 브레이크 포인트 뷰포트 크기 및 미디어 쿼리.
+//
+// 작은 구간부터 큰 구간까지 순서로 된 (이름: 최소 너비) 맵으로 정의.
+// (xs: 0, sm: 768px, md: 1024px, lg: 1440px)
+//
+// '$vu-grid-breakpoints' 전역 변수에 정의된 맵은 기본적으로 '$breakpoints' 인수로 사용.
+
+// 최소 브레이크 포인트 너비의 미디어 쿼리 생성. 최소 브레이크 포인트에 대한 쿼리 없음.
+// 지정된 브레이크 포인트 보다 클 경우 @content 적용.
+@mixin vu-media-breakpoint-up($name, $breakpoints: $vu-grid-breakpoints) {
+    $min: vu-breakpoint-min($name, $breakpoints);
+    
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// 최대 브레이크 포인트 너비의 미디어 쿼리 생성. 최대 브레이크 포인트에 대한 쿼리 없음.
+// 지정된 브레이크 포인트 보다 작을 경우 @content 적용.
+@mixin vu-media-breakpoint-down($name, $breakpoints: $vu-grid-breakpoints) {
+    $max: vu-breakpoint-max($name, $breakpoints);
+    
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+    @else {
+        @content;
+    }
+}
+
+// 여러 브레이크 포인트 너비에 걸쳐 있는 미디어 쿼리 생성.
+// 최소 브레이크 포인트와 최대 브레이크 포인트 사이에 @content 적용.
+@mixin vu-media-breakpoint-between($lower, $upper, $breakpoints: $vu-grid-breakpoints) {
+    $min: vu-breakpoint-min($lower, $breakpoints);
+    $max: vu-breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+    @else if $max == null {
+        @include vu-media-breakpoint-up($lower, $breakpoints) {
+            @content;
+        }
+    }
+    @else if $min == null {
+        @include vu-media-breakpoint-down($upper, $breakpoints) {
+            @content;
+        }
+    }
+}
+
+// 지정된 브레이크 포인트의 최소 및 최대 너비 사이의 미디어 쿼리 생성.
+// 가장 작은 브레이크 포인트의 최소값, 가장 큰 브레이크 포인트의 최대값 없음.
+// @content를 지정된 브레이크 포인트에만 적용.
+@mixin vu-media-breakpoint-only($name, $breakpoints: $vu-grid-breakpoints) {
+    $min:  vu-breakpoint-min($name, $breakpoints);
+    $next: vu-breakpoint-next($name, $breakpoints);
+    $max:  vu-breakpoint-max($next);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+    @else if $max == null {
+        @include vu-media-breakpoint-up($name, $breakpoints) {
+            @content;
+        }
+    }
+    @else if $min == null {
+        @include vu-media-breakpoint-down($next, $breakpoints) {
+            @content;
+        }
+    }
+}

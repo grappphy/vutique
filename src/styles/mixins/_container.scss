@@ -1,0 +1,8 @@
+@mixin vu-make-container() {
+    width: 100%;
+    height: inherit;
+    padding-right: var(--vu-container-padding-x);
+    padding-left: var(--vu-container-padding-x);
+    margin-right: auto;
+    margin-left: auto;
+}
