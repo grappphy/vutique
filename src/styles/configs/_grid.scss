@@ -1,0 +1,36 @@
+//# 그리드
+//# ───────────────────────────────────
+
+//! 그리드 클래스 활성화
+/// @type Boolean
+$vu-enable-grid-classes: false !default;
+
+//! 반응형 그리드 클래스 활성화
+/// @type Boolean
+$vu-enable-responsive-grid-classes: false !default;
+
+//! 그리드 브레이크 포인트 맵
+/// @type Map
+$vu-grid-breakpoints: (
+    xs:  0,
+    sm:  768px,
+    md:  1024px,
+    lg:  1440px
+) !default;
+
+//! 그리드 컬럼 최대 개수
+/// @type Number
+$vu-grid-columns: 16 !default;
+
+//! 그리드 로우 컬럼 최대 개수
+/// @type Number
+$vu-grid-row-columns: 10 !default;
+
+//! 그리드 거터 맵
+/// @type Map
+$vu-grid-gutters: (
+    xs: 16px,
+    sm: 32px,
+    md: 32px,
+    lg: 32px
+) !default;
