@@ -1,3 +1,6 @@
+@use "sass:math";
+@use "../configs" as *;
+
 @function vu-rem($values...) {
     $rem: null;
 
@@ -16,8 +19,8 @@
             $rem: $rem + auto + $space;
         }
         @else if type-of($value) == number {
-            @if($browser-unit == rem) {
-                $rem: $rem + (math.div($value, $browser-context) + rem + $space);
+            @if($vu-browser-unit == rem) {
+                $rem: $rem + (math.div($value, $vu-browser-context) + rem + $space);
             }
             @else {
                 $rem: $rem + $value + px + $space;
