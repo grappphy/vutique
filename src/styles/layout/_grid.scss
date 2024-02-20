@@ -1,0 +1,11 @@
+@if $vu-enable-grid-classes {
+    .#{$vu-variable-prefix}row {
+        @include vu-make-row-ready();
+
+        > * {
+            @include vu-make-col-ready();
+        }
+    }
+
+    @include vu-make-grid-classes();
+}

@@ -1,0 +1,65 @@
+@if $vu-enable-container-classes {
+    .vu-container,
+    .vu-container-fluid {
+        @include make-container();
+        box-sizing: border-box;
+    }
+
+    @if $vu-enable-responsive-container-classes {
+        .vu-container {
+            max-width: map-get($vu-container-max-widths, vu-map-get-key($vu-grid-breakpoints, last));
+        }
+        
+        @each $breakpoint, $container-max-width in $vu-container-max-widths {
+            $infix: vu-breakpoint-infix($breakpoint, $vu-grid-breakpoints);
+
+            .#{$infix}vu-container {
+                @extend .vu-container-fluid;
+            }
+
+            @include vu-media-breakpoint-up($breakpoint) {
+                %responsive-container-#{$breakpoint} {
+                    max-width: $container-max-width;
+                }
+
+                $extend-breakpoint: true;
+
+                @each $name, $width in $vu-grid-breakpoints {
+                    @if ($extend-breakpoint) {
+                        $infix: vu-breakpoint-infix($name, $vu-grid-breakpoints);
+
+                        @if ($infix != '') {
+                            .#{$infix}vu-container {
+                                @extend %responsive-container-#{$breakpoint};
+                            }
+                        }
+
+                        // Once the current breakpoint is reached, stop extending
+                        @if ($breakpoint == $name) {
+                            $extend-breakpoint: false;
+                        }
+                    }
+                }
+
+                .vu-container,
+                .vu-container-fluid {
+                    --vu-container-padding-x: #{map-get($vu-container-padding-x, $breakpoint)};
+                }
+            }
+        }
+    }
+    @else {
+        .vu-container {
+            max-width: map-get($vu-container-max-widths, vu-map-get-key($vu-grid-breakpoints, last));
+        }
+
+        @each $breakpoint in map-keys($vu-grid-breakpoints) {
+            @include vu-media-breakpoint-only($breakpoint) {
+                .vu-container,
+                .vu-container-fluid {
+                    --vu-container-padding-x: #{map-get($vu-container-padding-x, $breakpoint)};
+                }
+            }
+        }
+    }
+}
