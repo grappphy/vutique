@@ -1,0 +1,190 @@
+@use "../../functions" as *;
+
+//# 버튼
+//# ───────────────────────────────────
+
+//! 버튼 크기 맵
+/// @type Map
+$vu-button-sizes: (
+    xs: (
+        --vu-button-min-height: #{vu-rem(24)},
+        --vu-button-padding-x: #{vu-rem(8)},
+        --vu-button-padding-y: #{vu-rem(2)},
+        --vu-button-border-radius: #{vu-rem(4)},
+        --vu-button-font-size: #{vu-rem(12)},
+        --vu-button-line-height: #{vu-rem(18)},
+        --vu-button-icon-size: #{vu-rem(16)},
+        --vu-button-icon-gap-x: #{vu-rem(4)},
+        --vu-button-arrow-size: #{vu-rem(16)},
+        --vu-button-arrow-gap-x-start: #{vu-rem(2)},
+        --vu-button-arrow-gap-x-end: #{vu-rem(-4)}
+    ),
+    sm: (
+        --vu-button-min-height: vu-rem(32),
+        --vu-button-padding-x: #{vu-rem(12)},
+        --vu-button-padding-y: #{vu-rem(6)},
+        --vu-button-border-radius: #{vu-rem(8)},
+        --vu-button-font-size: #{vu-rem(12)},
+        --vu-button-line-height: #{vu-rem(18)},
+        --vu-button-icon-size: #{vu-rem(16)},
+        --vu-button-icon-gap-x: #{vu-rem(4)},
+        --vu-button-arrow-size: #{vu-rem(16)},
+        --vu-button-arrow-gap-x-start: #{vu-rem(2)},
+        --vu-button-arrow-gap-x-end: #{vu-rem(-4)}
+    ),
+    md: (
+        --vu-button-min-height: #{vu-rem(44)},
+        --vu-button-padding-x: #{vu-rem(16)},
+        --vu-button-padding-y: #{vu-rem(10)},
+        --vu-button-border-radius: #{vu-rem(12)},
+        --vu-button-font-size: #{vu-rem(14)},
+        --vu-button-line-height: #{vu-rem(20)},
+        --vu-button-icon-size: #{vu-rem(20)},
+        --vu-button-icon-gap-x: #{vu-rem(8)},
+        --vu-button-arrow-size: #{vu-rem(20)},
+        --vu-button-arrow-gap-x-start: #{vu-rem(4)},
+        --vu-button-arrow-gap-x-end: #{vu-rem(-8)}
+    ),
+    lg: (
+        --vu-button-min-height: #{vu-rem(56)},
+        --vu-button-padding-x: #{vu-rem(20)},
+        --vu-button-padding-y: #{vu-rem(10)},
+        --vu-button-border-radius: #{vu-rem(12)},
+        --vu-button-font-size: #{vu-rem(16)},
+        --vu-button-line-height: #{vu-rem(24)},
+        --vu-button-icon-size: #{vu-rem(20)},
+        --vu-button-icon-gap-x: #{vu-rem(8)},
+        --vu-button-arrow-size: #{vu-rem(20)},
+        --vu-button-arrow-gap-x-start: #{vu-rem(4)},
+        --vu-button-arrow-gap-x-end: #{vu-rem(-8)}
+    )
+) !default;
+
+
+
+//! 버튼 색상 맵
+/// @type Map
+$vu-button-colors: (
+    primary: (
+        'enable': (
+            --vu-button-bg-color: var(--vu-sem-color-brand-primary),
+            --vu-button-text-color: var(--vu-sem-color-inverse-indie-os-bw, var(--vu-glob-color-white))
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-sem-color-brand-primary-pressed)
+        ),
+        ':focus-visible': (
+            --vu-button-box-shadow: (inset 0 0 0 2px var(--vu-sem-color-brand-primary), inset 0 0 0 3px var(--vu-glob-color-white))
+        ),
+        'disabled': (
+            --vu-button-bg-color: var(--vu-sem-color-disabled-variant-3),
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-1),
+            --vu-button-box-shadow: none,
+            pointer-events: none,
+            cursor: default
+        )
+    ),
+    secondary: (
+        'enable': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-1),
+            --vu-button-text-color: var(--vu-glob-color-white)
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-1-pressed)
+        ),
+        ':focus-visible': (
+            --vu-button-box-shadow: (inset 0 0 0 2px var(--vu-sem-color-neutral-variant-1), inset 0 0 0 3px var(--vu-glob-color-white))
+        ),
+        'disabled': (
+            --vu-button-bg-color: var(--vu-sem-color-disabled-variant-3),
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-1),
+            --vu-button-box-shadow: none,
+            pointer-events: none,
+            cursor: default
+        )
+    ),
+    tertiary: (
+        'enable': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-2),
+            --vu-button-text-color: var(--vu-sem-color-on-surface-elevation-2),
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-2-pressed)
+        ),
+        ':focus-visible': (
+            --vu-button-box-shadow: inset 0 0 0 2px var(--vu-glob-color-gray400)
+        ),
+        'disabled': (
+            --vu-button-bg-color: var(--vu-sem-color-disabled-variant-3),
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-1),
+            --vu-button-box-shadow: none,
+            pointer-events: none,
+            cursor: default
+        )
+    ),
+    outline: (
+        'enable': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-3),
+            --vu-button-text-color: var(--vu-sem-color-on-surface-elevation-2),
+            --vu-button-box-shadow: inset 0 0 0 1px var(--vu-sem-color-border)
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-sem-color-neutral-variant-3-pressed),
+            --vu-button-box-shadow: inset 0 0 0 1px var(--vu-glob-color-gray400)
+        ),
+        ':focus-visible': (
+            --vu-button-box-shadow: inset 0 0 0 2px var(--vu-glob-color-gray400)
+        ),
+        'disabled': (
+            --vu-button-bg-color: var(--vu-sem-color-disabled-variant-3),
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-1),
+            pointer-events: none,
+            cursor: default
+        )
+    ),
+    white: (
+        'enable': (
+            --vu-button-bg-color: var(--vu-glob-color-white),
+            --vu-button-text-color: var(--vu-glob-color-gray880)
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-glob-color-gray200),
+            --vu-button-box-shadow: none
+        ),
+        'disabled': (
+            --vu-button-bg-color: var(--vu-sem-color-disabled-variant-6),
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-5),
+            pointer-events: none,
+            cursor: default
+        )
+    ),
+    ghost: (
+        'enable': (
+            --vu-button-text-color: var(--vu-glob-color-white),
+            --vu-button-box-shadow: inset 0 0 0 1px var(--vu-glob-color-white-50)
+        ),
+        ':active': (
+            --vu-button-bg-color: var(--vu-glob-color-white-20),
+            --vu-button-box-shadow: inset 0 0 0 1px var(--vu-glob-color-white)
+        ),
+        ':focus-visible': (
+            --vu-button-box-shadow: inset 0 0 0 2px var(--vu-glob-color-white)
+        ),
+        'disabled': (
+            --vu-button-text-color: var(--vu-sem-color-disabled-variant-7),
+            --vu-button-box-shadow: inset 0 0 0 1px var(--vu-sem-color-disabled-variant-7),
+            pointer-events: none,
+            cursor: default
+        )
+    )
+) !default;
+
+
+
+//! 버튼 형태 맵
+/// @type Map
+$vu-button-shapes: (
+    round: (
+        --vu-button-border-radius: #{vu-rem(100)}
+    )
+) !default;

@@ -1,0 +1,103 @@
+@use "config" as *;
+@use "../../mixins" as *;
+
+.vu-button {
+    --vu-button-width: auto;
+    --vu-button-min-width: var(--vu-button-min-height);
+    --vu-button-bg-color: transparent;
+    
+    display: inline-flex;
+    vertical-align: top;
+    align-items: center;
+    justify-content: center;
+    width: var(--vu-button-width);
+    min-width: var(--vu-button-min-width);
+    min-height: var(--vu-button-min-height);
+    padding: var(--vu-button-padding-y) var(--vu-button-padding-x);
+    margin: 0;
+    border: none;
+    border-radius: var(--vu-button-border-radius);
+    background-color: var(--vu-button-bg-color);
+    text-align: left;
+    text-decoration: none;
+    font-family: var(--vu-font-family-base);
+    font-weight: var(--vu-font-medium);
+    font-size: var(--vu-button-font-size);
+    line-height: var(--vu-button-line-height);
+    word-break: break-all;
+    color: var(--vu-button-text-color, inherit);
+    box-shadow: var(--vu-button-box-shadow);
+    box-sizing: border-box;
+    outline: none;
+    cursor: pointer;
+
+    &-icon {
+        --vu-icon-size: var(--vu-button-icon-size);
+    }
+
+    &-icon + &-text {
+        margin-left: var(--vu-button-icon-gap-x);
+    }
+
+    &-arrow {
+        --vu-icon-size: var(--vu-button-arrow-size);
+
+        margin-right: var(--vu-button-arrow-gap-x-end);
+        margin-left: var(--vu-button-arrow-gap-x-start);
+    }
+
+    // 색상
+    @each $color, $states in $vu-button-colors {
+        &\{#{"" + $color}\} {
+            @each $state, $state-value in $states {
+                @if $state == 'enable' {
+                    @each $prop, $prop-value in $state-value {
+                        #{$prop}: #{$prop-value};
+                    }
+                }
+                @else if $state == 'disabled' {
+                    &:disabled,
+                    &\:disabled {
+                        @each $prop, $prop-value in $state-value {
+                        #{$prop}: #{$prop-value};
+                        }
+                    }
+                }
+                @else {
+                    &#{$state} {
+                        @each $prop, $prop-value in $state-value {
+                            #{$prop}: #{$prop-value};
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-button-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 형태
+    @each $shape, $props in $vu-button-shapes {
+        &\{#{$shape}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유형
+    &\<icon\> {
+        --vu-button-padding-x: 0;
+    
+        .vu-button-text {
+            @include vu-a11y();
+        }
+    }
+}
