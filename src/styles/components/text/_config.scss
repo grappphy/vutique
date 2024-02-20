@@ -1,0 +1,83 @@
+@charset "utf-8";
+
+@use "../../functions" as *;
+
+//# 텍스트
+//# ───────────────────────────────────
+
+//! 텍스트 유형 맵
+/// @type Map
+$vu-text-types: (
+    gradient: (
+        background: var(--vu-color, var(--vu-text-color)),
+        -webkit-background-clip: text,
+        -webkit-text-fill-color: transparent
+    )
+) !default;
+
+
+
+//! 텍스트 크기 맵
+/// @type Map
+$vu-text-sizes: (
+    11: (
+        --vu-text-font-size: #{vu-rem(11)},
+        --vu-text-line-height: #{vu-rem(18)},
+        --vu-text-letter-space: -0.02em
+    ),
+    12: (
+        --vu-text-font-size: #{vu-rem(12)},
+        --vu-text-line-height: #{vu-rem(18)},
+        --vu-text-letter-space: -0.02em
+    ),
+    13: (
+        --vu-text-font-size: #{vu-rem(13)},
+        --vu-text-line-height: #{vu-rem(22)},
+        --vu-text-letter-space: -0.025em
+    ),
+    14: (
+        --vu-text-font-size: #{vu-rem(14)},
+        --vu-text-line-height: #{vu-rem(24)},
+        --vu-text-letter-space: -0.03em
+    ),
+    15: (
+        --vu-text-font-size: #{vu-rem(15)},
+        --vu-text-line-height: #{vu-rem(24)},
+        --vu-text-letter-space: -0.03em
+    ),
+    16: (
+        --vu-text-font-size: #{vu-rem(16)},
+        --vu-text-line-height: #{vu-rem(26)},
+        --vu-text-letter-space: -0.03em
+    ),
+    18: (
+        --vu-text-font-size: #{vu-rem(18)},
+        --vu-text-line-height: #{vu-rem(26)},
+        --vu-text-letter-space: -0.03em
+    ),
+    20: (
+        --vu-text-font-size: #{vu-rem(20)},
+        --vu-text-line-height: #{vu-rem(30)},
+        --vu-text-letter-space: -0.03em
+    ),
+    24: (
+        --vu-text-font-size: #{vu-rem(24)},
+        --vu-text-line-height: #{vu-rem(34)},
+        --vu-text-letter-space: -0.03em
+    ),
+    32: (
+        --vu-text-font-size: #{vu-rem(32)},
+        --vu-text-line-height: #{vu-rem(44)},
+        --vu-text-letter-space: -0.03em
+    ),
+    42: (
+        --vu-text-font-size: #{vu-rem(42)},
+        --vu-text-line-height: #{vu-rem(56)},
+        --vu-text-letter-space: -0.03em
+    ),
+    50: (
+        --vu-text-font-size: #{vu-rem(50)},
+        --vu-text-line-height: #{vu-rem(70)},
+        --vu-text-letter-space: -0.03em
+    )
+) !default;

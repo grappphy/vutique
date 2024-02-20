@@ -1,0 +1,25 @@
+@use "config" as *;
+
+.vu-text {
+    display: inline-block;
+    font-size: var(--vu-text-font-size, inherit);
+    line-height: var(--vu-text-line-height, inherit);
+    letter-spacing: var(--vu-text-letter-space, inherit);
+    color: var(--vu-color, var(--vu-text-color));
+
+    @each $type, $props in $vu-text-types {
+        &\<#{$type}\> {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    @each $size, $props in $vu-text-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
