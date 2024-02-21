@@ -1,12 +1,12 @@
 @if $vu-enable-container-classes {
-    .vu-container,
-    .vu-container-fluid {
+    .#{$vu-variable-prefix}container,
+    .#{$vu-variable-prefix}container-fluid {
         @include make-container();
         box-sizing: border-box;
     }
 
     @if $vu-enable-responsive-container-classes {
-        .vu-container {
+        .#{$vu-variable-prefix}container {
             max-width: map-get($vu-container-max-widths, vu-map-get-key($vu-grid-breakpoints, last));
         }
         
@@ -14,7 +14,7 @@
             $infix: vu-breakpoint-infix($breakpoint, $vu-grid-breakpoints);
 
             .#{$infix}vu-container {
-                @extend .vu-container-fluid;
+                @extend .#{$vu-variable-prefix}container-fluid;
             }
 
             @include vu-media-breakpoint-up($breakpoint) {
@@ -29,7 +29,7 @@
                         $infix: vu-breakpoint-infix($name, $vu-grid-breakpoints);
 
                         @if ($infix != '') {
-                            .#{$infix}vu-container {
+                            .#{$infix}#{$vu-variable-prefix}container {
                                 @extend %responsive-container-#{$breakpoint};
                             }
                         }
@@ -41,22 +41,22 @@
                     }
                 }
 
-                .vu-container,
-                .vu-container-fluid {
+                .#{$vu-variable-prefix}container,
+                .#{$vu-variable-prefix}container-fluid {
                     --vu-container-padding-x: #{map-get($vu-container-padding-x, $breakpoint)};
                 }
             }
         }
     }
     @else {
-        .vu-container {
+        .#{$vu-variable-prefix}container {
             max-width: map-get($vu-container-max-widths, vu-map-get-key($vu-grid-breakpoints, last));
         }
 
         @each $breakpoint in map-keys($vu-grid-breakpoints) {
             @include vu-media-breakpoint-only($breakpoint) {
-                .vu-container,
-                .vu-container-fluid {
+                .#{$vu-variable-prefix}container,
+                .#{$vu-variable-prefix}container-fluid {
                     --vu-container-padding-x: #{map-get($vu-container-padding-x, $breakpoint)};
                 }
             }

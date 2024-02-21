@@ -360,7 +360,7 @@
     --vu-sem-color-inverse-indie-os-bw: var(--vu-glob-color-white);
 }
 
-.vu-theme\<dark\> {
+.#{$vu-variable-prefix}theme\<dark\> {
     /*
         Semantic color variables (dark)
     */

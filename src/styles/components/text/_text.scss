@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-text {
+.#{$vu-variable-prefix}text {
     display: inline-block;
     font-size: var(--vu-text-font-size, inherit);
     line-height: var(--vu-text-line-height, inherit);

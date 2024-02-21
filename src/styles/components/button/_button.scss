@@ -1,7 +1,7 @@
 @use "config" as *;
 @use "../../mixins" as *;
 
-.vu-button {
+.#{$vu-variable-prefix}button {
     --vu-button-width: auto;
     --vu-button-min-width: var(--vu-button-min-height);
     --vu-button-bg-color: transparent;
@@ -96,7 +96,7 @@
     &\<icon\> {
         --vu-button-padding-x: 0;
     
-        .vu-button-text {
+        .#{$vu-variable-prefix}button-text {
             @include vu-a11y();
         }
     }
