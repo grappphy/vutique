@@ -1,0 +1,57 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}badge {
+    --vu-badge-signature-color: var(--vu-color);
+
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    min-width: var(--vu-badge-size);
+    height: var(--vu-badge-size);
+    border: 1px solid transparent;
+    border-radius: var(--vu-badge-radius);
+    background: var(--vu-badge-bg-color);
+    background-origin: border-box;
+    font-family: var(--vu-font-family-base);
+    font-style: normal;
+    font-weight: var(--vu-font-bold);
+    font-size: var(--vu-badge-font-size);
+    line-height: var(--vu-badge-line-height);
+    letter-spacing: var(--vu-letter-spacing);
+    white-space: nowrap;
+    color: var(--vu-badge-text-color);
+    box-sizing: border-box;
+
+    &-text {
+        padding: var(--vu-badge-padding);
+    }
+
+    // 유형
+    @each $type, $map in $vu-badge-types {
+        &\<#{$type}\> {
+            @each $property, $value in $map {
+                #{$property}: #{$value};
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $map in $vu-badge-sizes {
+        &\{#{$size}\} {
+            @each $property, $value in $map {
+                #{$property}: #{$value};
+            }
+        }
+    }
+
+    // 형태
+    @each $shape, $map in $vu-badge-shapes {
+        &\{#{$shape}\} {
+            @each $property, $value in $map {
+                #{$property}: #{$value};
+            }
+        }
+    }
+}

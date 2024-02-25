@@ -1,0 +1,72 @@
+@forward "../../configs";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 뱃지
+//# ───────────────────────────────────
+
+//! 뱃지 유형 맵
+/// @type Map
+$vu-badge-types: (
+    filled: (
+        --vu-badge-bg-color: var(--vu-badge-signature-color)
+    ),
+    outline: (
+        --vu-badge-text-color: var(--vu-badge-signature-color),
+        --vu-badge-bg-color: (linear-gradient(var(--stds-sem-color-neutral-variant-3), var(--stds-sem-color-neutral-variant-3)), var(--vu-badge-signature-color)),
+        background-clip: (content-box, border-box)
+    )
+) !default;
+
+
+
+//! 뱃지 크기 맵
+/// @type Map
+$vu-badge-sizes: (
+    xs: (
+        --vu-badge-size: #{vu-rem(16)},
+        --vu-badge-padding: #{vu-rem(0, 3)},
+        --vu-badge-font-size: #{vu-rem(10)},
+        --vu-badge-line-height: #{vu-rem(16)},
+        --vu-badge-radius: #{vu-rem(2)}
+    ),
+    sm: (
+        --vu-badge-size: #{vu-rem(20)},
+        --vu-badge-padding: #{vu-rem(0, 4)},
+        --vu-badge-font-size: #{vu-rem(12)},
+        --vu-badge-line-height: #{vu-rem(18)},
+        --vu-badge-radius: #{vu-rem(2)}
+    ),
+    md: (
+        --vu-badge-size: #{vu-rem(24)},
+        --vu-badge-padding: #{vu-rem(0, 8)},
+        --vu-badge-font-size: #{vu-rem(14)},
+        --vu-badge-line-height: #{vu-rem(20)},
+        --vu-badge-radius: #{vu-rem(2)}
+    ),
+    lg: (
+        --vu-badge-size: #{vu-rem(28)},
+        --vu-badge-padding: #{vu-rem(0, 8)},
+        --vu-badge-font-size: #{vu-rem(14)},
+        --vu-badge-line-height: #{vu-rem(20)},
+        --vu-badge-radius: #{vu-rem(2)}
+    )
+) !default;
+
+
+
+//! 뱃지 모양 맵
+/// @type Map
+$vu-badge-shapes: (
+    round: (
+        --vu-badge-radius: var(--vu-badge-size)
+    ),
+    dot: (
+        --vu-badge-size: #{vu-rem(4)},
+        --vu-badge-padding: 0,
+        --vu-badge-radius: var(--vu-badge-size),
+        --vu-badge-font-size: 0,
+        --vu-badge-line-height: 0,
+        width: var(--vu-badge-size)
+    )
+) !default;
