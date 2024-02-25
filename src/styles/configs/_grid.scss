@@ -12,10 +12,10 @@ $vu-enable-responsive-grid-classes: false !default;
 //! 그리드 브레이크 포인트 맵
 /// @type Map
 $vu-grid-breakpoints: (
-    xs:  0,
-    sm:  768px,
-    md:  1024px,
-    lg:  1440px
+    xs: 0,
+    sm: 768px,
+    md: 1024px,
+    lg: 1440px
 ) !default;
 
 //! 그리드 컬럼 최대 개수
