@@ -1,3 +1,6 @@
+@use "../configs" as *;
+@use "../mixins" as *;
+
 @if $vu-enable-grid-classes {
     .#{$vu-variable-prefix}row {
         @include vu-make-row-ready();
