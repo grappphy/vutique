@@ -1,7 +1,11 @@
+@use "../configs" as *;
+@use "../functions" as *;
+@use "../mixins" as *;
+
 @if $vu-enable-container-classes {
     .#{$vu-variable-prefix}container,
     .#{$vu-variable-prefix}container-fluid {
-        @include make-container();
+        @include vu-make-container();
         box-sizing: border-box;
     }
 
@@ -13,7 +17,7 @@
         @each $breakpoint, $container-max-width in $vu-container-max-widths {
             $infix: vu-breakpoint-infix($breakpoint, $vu-grid-breakpoints);
 
-            .#{$infix}vu-container {
+            .#{$infix}#{$vu-variable-prefix}container {
                 @extend .#{$vu-variable-prefix}container-fluid;
             }
 

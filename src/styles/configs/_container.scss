@@ -1,0 +1,30 @@
+@use "../functions" as *;
+
+//# 컨테이너
+//# ───────────────────────────────────
+
+//! 컨테이너 클래스 활성화
+/// @type Boolean
+$vu-enable-container-classes: true !default;
+
+//! 반응형 컨테이너 클래스 활성화
+/// @type Boolean
+$vu-enable-responsive-container-classes: false !default;
+
+//! 컨테이너 최대 너비 맵
+/// @type Map
+$vu-container-max-widths: (
+  xs: 376px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1396px
+) !default;
+
+//! 컨테이너 X축 패딩 맵
+/// @type Number
+$vu-container-padding-x: (
+  xs: vu-rem(20),
+  sm: vu-rem(40),
+  md: vu-rem(40),
+  lg: vu-rem(48)
+) !default;
