@@ -1,0 +1,7 @@
+@use "../configs/colors" as *;
+
+@each $color, $value in $vu-colors {
+    .vu-color\{#{$color}\} {
+        --vu-color: #{$value};
+    }
+}
