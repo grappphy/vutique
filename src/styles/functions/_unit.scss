@@ -1,5 +1,5 @@
 @use "sass:math";
-@use "../configs" as *;
+@use "../configs/unit" as *;
 
 @function vu-rem($values...) {
     $rem: null;
