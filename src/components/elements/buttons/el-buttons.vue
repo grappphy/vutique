@@ -1,7 +1,7 @@
 <template>
-    <div class="sc-buttons">
+    <div class="vu-buttons">
         <!-- 슬롯: 아이템 -->
-        <slot name="item" :default-class="'sc-buttons-item'" />
+        <slot name="item" :default-class="'vu-buttons-item'" />
     </div>
 </template>
 
@@ -12,3 +12,7 @@ export default defineComponent({
     name: 'vu-el-buttons'
 });
 </script>
+
+<style lang="scss">
+@import '../../../styles/components/buttons';
+</style>

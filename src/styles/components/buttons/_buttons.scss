@@ -1,0 +1,23 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}buttons {
+    --vu-buttons-gap-y: 0px;
+    --vu-buttons-gap-x: 0px;
+    --vu-buttons-item-flex-grow: 1;
+    --vu-buttons-item-flex-shrink: 1;
+    --vu-buttons-item-flex-basis: auto;
+  
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: calc(var(--vu-buttons-gap-y) * -0.5) calc(var(--vu-buttons-gap-x) * -0.5);
+    list-style: none;
+  
+    &-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: var(--vu-buttons-item-flex-grow) var(--vu-buttons-item-flex-shrink) var(--vu-buttons-item-flex-basis);
+        padding: calc(var(--vu-buttons-gap-y) * 0.5) calc(var(--vu-buttons-gap-x) * 0.5);
+    }
+}
