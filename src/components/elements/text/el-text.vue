@@ -57,7 +57,7 @@ export default defineComponent({
         const classes = computed(() => {
             const defaultClass = 'vu-text';
 
-            const tyepClass = props.type ? `${defaultClass}:${props.type}` : null;
+            const tyepClass = props.type ? `${defaultClass}<${props.type}>` : null;
 
             const sizeClass = props.size ? `${defaultClass}{${props.size}}` : null;
 
