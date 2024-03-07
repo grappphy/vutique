@@ -1,0 +1,92 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 체크박스
+//# ───────────────────────────────────
+
+//! 체크박스 크기 맵
+/// @type Map
+$vu-checkbox-sizes: (
+    sm: (
+        --vu-checkbox-size: #{vu-rem(16)},
+        --vu-checkbox-caret-size: #{vu-rem(12)},
+        --vu-checkbox-control-translate-y: #{vu-rem(4)},
+        --vu-checkbox-label-font-size: #{vu-rem(14)},
+        --vu-checkbox-label-line-height: #{vu-rem(24)}
+    ),
+    md: (
+        --vu-checkbox-size: #{vu-rem(20)},
+        --vu-checkbox-caret-size: #{vu-rem(16)},
+        --vu-checkbox-control-translate-y: #{vu-rem(2)},
+        --vu-checkbox-label-font-size: #{vu-rem(14)},
+        --vu-checkbox-label-line-height: #{vu-rem(24)}
+    ),
+    lg: (
+        --vu-checkbox-size: #{vu-rem(24)},
+        --vu-checkbox-caret-size: #{vu-rem(20)},
+        --vu-checkbox-control-translate-y: #{vu-rem(1)},
+        --vu-checkbox-label-font-size: #{vu-rem(16)},
+        --vu-checkbox-label-line-height: #{vu-rem(26)}
+    )
+) !default;
+
+
+
+//! 체크박스 정렬 맵
+/// @type Map
+$vu-checkbox-aligns: (
+    align-top: (
+        --vu-checkbox-control-transform: translateY(var(--vu-checkbox-control-translate-y)),
+        align-items: flex-start
+    )
+) !default;
+
+
+
+//! 체크박스 컨트롤 상태 맵
+/// @type Map
+$vu-checkbox-control-states: (
+    ':focus-visible': (
+        --vu-checkbox-box-shadow: inset 0 0 0 2px var(--vu-glob-color-gray400)
+    ),
+    ':checked': (
+        --vu-checkbox-caret: '"\f00c"',
+        --vu-checkbox-bg-color: var(--vu-sem-color-brand-primary),
+        --vu-checkbox-box-shadow: inset 0 0 0 1px var(--vu-sem-color-brand-primary)
+    ),
+    ':checked:focus-visible': (
+        --vu-checkbox-box-shadow: (inset 0 0 0 1px var(--vu-sem-color-brand-primary), inset 0 0 0 2px var(--vu-glob-color-white))
+    )
+) !default;
+
+
+
+//! 체크박스 상태 맵
+/// @type Map
+$vu-checkbox-states: (
+    '\:readonly': (
+        --vu-checkbox-cursor: default
+    ),
+    '\:disabled': (
+        --vu-checkbox-bg-color: var(--vu-sem-color-disabled-variant-3),
+        --vu-checkbox-label-text-color: var(--vu-sem-color-disabled-variant-1),
+        --vu-checkbox-caret-color: var(--vu-sem-color-disabled-variant-4)
+    ),
+    '\:disabled &-control:checked': (
+        --vu-checkbox-bg-color: var(--vu-sem-color-disabled-variant-2),
+        --vu-checkbox-box-shadow: none
+    )
+) !default;
+
+
+
+//! 체크박스 추가 기능 맵
+/// @type Map
+$vu-checkbox-additions: (
+    'reverse': (
+        --vu-checkbox-label-gap: #{vu-rem(0, 8, 0, 0)},
+        flex-direction: row-reverse
+    )
+) !default;

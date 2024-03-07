@@ -11,6 +11,7 @@
             </template>
         </vu-el-buttons>
         <vu-el-badge :type="'filled'" :size="'sm'" :color="'primary'" :text="'뱃지'" :text-color="'white'" />
+        <vu-el-checkbox :size="'sm'" :control-type="'checkbox'" :label="'체크박스'" :use-label="true" />
     </vu-el-container>
 </template>
 
@@ -18,14 +19,15 @@
 import { defineComponent } from 'vue';
 
 // Elements
-import { VuElContainer, VuElButtons, VuElButton, VuElBadge } from './components/elements';
+import { VuElContainer, VuElButtons, VuElButton, VuElBadge, VuElCheckbox } from './components/elements';
 
 export default defineComponent({
     components: {
         VuElContainer,
         VuElButtons,
         VuElButton,
-        VuElBadge
+        VuElBadge,
+        VuElCheckbox
     }
 });
 </script>
