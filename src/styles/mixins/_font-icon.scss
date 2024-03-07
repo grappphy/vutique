@@ -1,0 +1,8 @@
+
+@mixin vu-font-icon($font-family: 'Font Awesome 6 Free', $content: null) {
+    content: $content;
+    display: block;
+    font-family: $font-family;
+    font-weight: 900;
+    line-height: 1;
+}
