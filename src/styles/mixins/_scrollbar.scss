@@ -1,0 +1,50 @@
+
+@mixin vu-scrollbar(
+    $size: null,
+    $fg-color: null,
+    $bg-color: null,
+    $thumb-radius: null,
+    $border-radius: null,
+    $thumb-size: null,
+    $thumb-border: null,
+    $hover-fg-color: null
+) {
+    --vu-scrollbar-fg-color: #{$fg-color};
+    --vu-scrollbar-bg-color: #{$bg-color};
+    --vu-scrollbar-width: #{$size};
+    --vu-scrollbar-height: #{$size};
+    --vu-scrollbar-hover-fg-color: #{$hover-fg-color};
+
+    scrollbar-color: var(--vu-scrollbar-bg-color);
+
+    &::-webkit-scrollbar {
+        width: var(--vu-scrollbar-width);
+        height: var(--vu-scrollbar-height);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        width: $thumb-size;
+        height: $thumb-size;
+        background: var(--vu-scrollbar-fg-color);
+        border: $thumb-border;
+        border-radius: $thumb-radius;
+        background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--vu-scrollbar-hover-fg-color);
+    }
+
+    &::-webkit-scrollbar-track {
+        background: var(--vu-scrollbar-bg-color);
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: rgba(0, 0, 0, 0);
+    }
+
+    & {
+        scrollbar-face-color: var(--vu-scrollbar-fg-color);
+        scrollbar-track-color: var(--vu-scrollbar-bg-color);
+    }
+}
