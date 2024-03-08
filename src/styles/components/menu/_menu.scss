@@ -1,0 +1,103 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}menu {
+    --vu-placement-gap-y: #{vu-rem(4)};
+    --vu-placement-gap-x: #{vu-rem(4)};
+    --vu-placement-offset-y: 0px;
+    --vu-placement-offset-x: 0px;
+    --vu-menu-min-width: #{vu-rem(108)};
+    --vu-menu-max-height: #{vu-rem(350)};
+    --vu-menu-max-height: #{vu-rem(350)};
+    --vu-menu-radius: #{vu-rem(12)};
+    --vu-menu-bg-color: var(--vu-sem-color-surface-layer);
+    --vu-menu-box-shadow-color: var(--vu-glob-color-black-10);
+    --vu-menu-z-index: var(--vu-glob-z-index-dropdown);
+    --vu-menu-list-padding: #{vu-rem(8)};
+    --vu-menu-button-radius: #{vu-rem(8)};
+    --vu-menu-button-padding: #{vu-rem(10, 16)};
+    --vu-menu-button-bg-color: transparent;
+    --vu-menu-button-text-color: var(--vu-sem-color-on-surface-elevation-2);
+    
+    display: flex;
+    flex-direction: column;
+    min-width: var(--vu-menu-min-width);
+    max-height: var(--vu-menu-max-height);
+    border-radius: var(--vu-menu-radius);
+    background-color: var(--vu-menu-bg-color);
+    box-shadow: vu-rem(0, 4, 10, 0) var(--vu-menu-box-shadow-color);
+    z-index: var(--vu-menu-z-index);
+
+    &-body {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    &-list {
+        @include vu-scrollbar(
+            $size: #{vu-rem(16)},
+            $fg-color: var(--vu-sem-color-inverse-elevation-2),
+            $bg-color: transparent,
+            $thumb-radius: #{vu-rem(8)},
+            $thumb-size: #{vu-rem(6)},
+            $thumb-border: #{vu-rem(6)} solid transparent,
+            $hover-fg-color: var(--vu-sem-color-inverse-elevation-1)
+        );
+
+        overscroll-behavior: contain;
+        overflow-y: auto;
+        overflow-y: overlay;
+        padding: var(--vu-menu-list-padding);
+        margin: 0;
+        list-style: none;
+    }
+
+    &-list::-webkit-scrollbar-thumb {
+        min-height: vu-rem(64);
+    }
+
+    &-button {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: var(--vu-menu-button-padding);
+        margin: 0;
+        background-color: var(--vu-menu-button-bg-color);
+        border-radius: var(--vu-menu-button-radius);
+        border: 0;
+        text-align: left;
+        font-family: inherit;
+        font-size: vu-rem(14);
+        line-height: vu-rem(20);
+        letter-spacing: inherit;
+        color: var(--vu-menu-button-text-color);
+        white-space: nowrap;
+        outline: none;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+
+    &-button:hover {
+        --vu-menu-button-bg-color: var(--vu-sem-color-interaction-hover);
+    }
+
+    &-button:focus-visible {
+        --vu-menu-button-bg-color: var(--vu-sem-color-interaction-hover);
+    }
+
+    &-button.\:focused {
+        --vu-menu-button-bg-color: var(--vu-sem-color-interaction-hover);
+    }
+
+    &-button:active {
+        --vu-menu-button-bg-color: var(--vu-sem-color-interaction-pressed);
+    }
+
+    &-text {
+        @include vu-truncate();
+    }
+
+    &-item.\:active {
+        --vu-menu-button-text-color: var(--vu-sem-color-brand-primary);
+    }
+}
