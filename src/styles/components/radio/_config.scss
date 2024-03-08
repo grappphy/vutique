@@ -1,0 +1,94 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 라디오
+//# ───────────────────────────────────
+
+//! 라디오 크기 맵
+/// @type Map
+$vu-radio-sizes: (
+    sm: (
+        --vu-radio-size: #{vu-rem(16)},
+        --vu-radio-caret-size: #{vu-rem(8)},
+        --vu-radio-control-translate-y: #{vu-rem(4)},
+        --vu-radio-label-font-size: #{vu-rem(14)},
+        --vu-radio-label-line-height: #{vu-rem(24)}
+    ),
+    md: (
+        --vu-radio-size: #{vu-rem(20)},
+        --vu-radio-caret-size: #{vu-rem(10)},
+        --vu-radio-control-translate-y: #{vu-rem(2)},
+        --vu-radio-label-font-size: #{vu-rem(14)},
+        --vu-radio-label-line-height: #{vu-rem(24)}
+    ),
+    lg: (
+        --vu-radio-size: #{vu-rem(24)},
+        --vu-radio-caret-size: #{vu-rem(12)},
+        --vu-radio-control-translate-y: #{vu-rem(1)},
+        --vu-radio-label-font-size: #{vu-rem(16)},
+        --vu-radio-label-line-height: #{vu-rem(26)}
+    )
+) !default;
+
+
+
+//! 라디오 정렬 맵
+/// @type Map
+$vu-radio-aligns: (
+    align-top: (
+        --vu-radio-control-transform: translateY(var(--vu-radio-control-translate-y)),
+        align-items: flex-start
+    )
+) !default;
+
+
+
+//! 라디오 컨트롤 상태 맵
+/// @type Map
+$vu-radio-control-states: (
+    ':focus-visible': (
+        --vu-radio-box-shadow: inset 0 0 0 2px var(--vu-glob-color-gray400)
+    ),
+    ':checked': (
+        --vu-radio-bg-color: var(--vu-sem-color-brand-primary),
+        --vu-radio-box-shadow: inset 0 0 0 1px var(--vu-sem-color-brand-primary)
+    ),
+    ':checked:after': (
+        background-color: var(--vu-radio-caret-color)
+    ),
+    ':checked:focus-visible': (
+        --vu-radio-box-shadow: (inset 0 0 0 1px var(--vu-sem-color-brand-primary), inset 0 0 0 2px var(--vu-glob-color-white))
+    )
+) !default;
+
+
+
+//! 라디오 상태 맵
+/// @type Map
+$vu-radio-states: (
+    '\:readonly': (
+        --vu-radio-cursor: default
+    ),
+    '\:disabled': (
+        --vu-radio-bg-color: var(--vu-sem-color-disabled-variant-3),
+        --vu-radio-label-text-color: var(--vu-sem-color-disabled-variant-1),
+        --vu-radio-caret-color: var(--vu-sem-color-disabled-variant-4)
+    ),
+    '\:disabled &-control:checked': (
+        --vu-radio-bg-color: var(--vu-sem-color-disabled-variant-2),
+        --vu-radio-box-shadow: none
+    )
+) !default;
+
+
+
+//! 라디오 추가 기능 맵
+/// @type Map
+$vu-radio-additions: (
+    'reverse': (
+        --vu-radio-label-gap: #{vu-rem(0, 8, 0, 0)},
+        flex-direction: row-reverse
+    )
+) !default;

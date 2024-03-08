@@ -1,0 +1,112 @@
+@use "config" as *;
+
+.vu-radio {
+    --vu-radio-box-shadow: inset 0 0 0 1px var(--vu-sem-color-border);
+    --vu-radio-bg-color: var(--vu-sem-color-neutral-variant-3);
+    --vu-radio-cursor: pointer;
+    --vu-radio-caret: '';
+    --vu-radio-caret-color: var(--vu-sem-color-inverse-indie-os-bw, var(--vu-glob-color-white));
+    --vu-radio-label-gap: #{vu-rem(0, 0, 0, 8)};
+    --vu-radio-label-text-color: var(--vu-sem-color-on-surface-elevation-2);
+
+    position: relative;
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+
+    &-control {
+        position: relative;
+        display: flex;
+        vertical-align: top;
+        flex-shrink: 0;
+        width: var(--vu-radio-size);
+        height: var(--vu-radio-size);
+        margin: 0;
+        border: none;
+        border-radius: 50%;
+        background-color: var(--vu-radio-bg-color);
+        box-shadow: var(--vu-radio-box-shadow);
+        outline: none;
+        appearance: none;
+        transform: var(--vu-radio-control-transform);
+        cursor: var(--vu-radio-cursor);
+    }
+
+    &-control::after {
+        content: var(--vu-radio-caret);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: var(--vu-radio-caret-size);
+        height: var(--vu-radio-caret-size);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    &-label {
+        flex-grow: 1;
+        padding: var(--vu-radio-label-gap);
+        font-size: var(--vu-radio-label-font-size);
+        line-height: var(--vu-radio-label-line-height);
+        color: var(--vu-radio-label-text-color);
+        word-break: break-word;
+        cursor: var(--vu-radio-cursor);
+    }
+
+    // 컨트롤 상태
+    @each $state, $props in $vu-radio-control-states {
+        &-control#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-radio-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 상태
+    @each $state, $props in $vu-radio-states {
+        &#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 정렬
+    @each $align, $props in $vu-radio-aligns {
+        &\{#{$align}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 추가 기능
+    @each $addition, $props in $vu-radio-additions {
+        &\{#{$addition}\} {
+            @each $prop, $value in $props {
+                @if (type-of($value) == map) {
+                    #{$prop} {
+                        @each $sub-prop, $sub-value in $value {
+                            #{$sub-prop}: #{$sub-value};
+                        }
+                    }
+                }
+                @else {
+                    #{$prop}: #{$value};
+                }
+            }
+        }
+    }
+}
