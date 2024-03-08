@@ -1,0 +1,102 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 다이얼로그
+//# ───────────────────────────────────
+
+//! 다이얼로그 크기 맵
+/// @type Map
+$vu-dialog-sizes: (
+    sm: (
+        --vu-dialog-max-width: #{vu-rem(312)},
+        --vu-dialog-min-height: #{vu-rem(136)},
+        --vu-dialog-panel-padding-x: #{vu-rem(24)},
+        --vu-dialog-header-padding-y: #{vu-rem(16)},
+    ),
+    md: (
+        --vu-dialog-max-width: #{vu-rem(560)},
+        --vu-dialog-min-height: #{vu-rem(320)},
+        --vu-dialog-panel-padding-x: #{vu-rem(32)},
+        --vu-dialog-header-padding-y: #{vu-rem(20)}
+    ),
+    lg: (
+        --vu-dialog-max-width: #{vu-rem(932)},
+        --vu-dialog-min-height: #{vu-rem(618)},
+        --vu-dialog-panel-padding-x: #{vu-rem(36)},
+        --vu-dialog-header-padding-y: #{vu-rem(20)}
+    )
+) !default;
+
+
+
+//! 다이얼로그 브레이크포인트 XS 전용 크기 맵
+/// @type Map
+$vu-dialog-only-xs-sizes: (
+    lg: (
+        --vu-dialog-panel-padding-x: #{vu-rem(20)}
+    )
+) !default;
+
+
+
+//! 다이얼로그 브레이크포인트 SM 전용 크기 맵
+/// @type Map
+$vu-dialog-only-sm-sizes: (
+    lg: (
+        --vu-dialog-panel-padding-x: #{vu-rem(40)}
+    )
+) !default;
+
+
+
+//! 다이얼로그 브레이크포인트 MD 미만 크기 맵
+/// @type Map
+$vu-dialog-down-md-sizes: (
+    lg: (
+        --vu-dialog-padding: 0,
+        --vu-dialog-max-width: none,
+        --vu-dialog-min-height: 100%,
+        --vu-dialog-border-radius: 0
+    )
+) !default;
+
+
+
+//! 다이얼로그 브레이크포인트 XS 전용 유형 맵
+/// @type Map
+$vu-dialog-only-xs-types: (
+    bottom: (
+        --vu-dialog-padding: #{vu-rem(32, 0, 0, 0)},
+        --vu-dialog-align-items: flex-end,
+        --vu-dialog-max-width: none,
+        --vu-dialog-min-height: auto,
+        --vu-dialog-border-radius: #{vu-rem(16, 16, 0, 0)},
+        --vu-dialog-panel-padding-x: #{vu-rem(20)},
+        --vu-dialog-panel-animation: vu-dialog-slide-in-up cubic-bezier(0.32, 1, 0.23, 1) .3s,
+        --vu-dialog-header-padding: #{vu-rem(16)} var(--vu-dialog-panel-padding-x),
+        --vu-dialog-footer-buttons-grow: 1
+    ),
+    fullpage: (
+        --vu-dialog-padding: 0,
+        --vu-dialog-max-width: none,
+        --vu-dialog-min-height: 100%,
+        --vu-dialog-border-radius: 0,
+        --vu-dialog-panel-padding-x: #{vu-rem(20)},
+        --vu-dialog-header-padding: #{vu-rem(16)} var(--vu-dialog-panel-padding-x)
+    )
+) !default;
+
+
+
+//! 다이얼로그 추가 기능 맵
+/// @type Map
+$vu-dialog-additions: (
+    paddingless: (
+        --vu-dialog-body-end-padding: 0
+    ),
+    footerless: (
+        --vu-dialog-body-end-padding: 0 var(--vu-dialog-panel-padding-x) #{vu-rem(24)}
+    )
+) !default;

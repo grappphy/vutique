@@ -1,0 +1,301 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}dialog {
+    --vu-dialog-padding: #{vu-rem(32, 0)};
+    --vu-dialog-align-items: center;
+    --vu-dialog-bg-color: var(--vu-sem-color-surface-elevation-indie4);
+    --vu-dialog-border-radius: #{vu-rem(20)};
+    --vu-dialog-scroll-width: #{vu-rem(4)};
+    --vu-dialog-panel-max-height: 100%;
+    --vu-dialog-panel-animation: vu-dialog-zoom-in ease-in-out .15s;
+    --vu-dialog-header-padding-x: var(--vu-dialog-panel-padding-x);
+    --vu-dialog-header-title-font-size: #{vu-rem(16)};
+    --vu-dialog-header-title-line-height: #{vu-rem(24)};
+    --vu-dialog-body-end-padding: 0 var(--vu-dialog-panel-padding-x);
+    --vu-dialog-body-title-font-size: #{vu-rem(18)};
+    --vu-dialog-body-title-line-height: #{vu-rem(26)};
+    --vu-dialog-body-text-font-size: #{vu-rem(15)};
+    --vu-dialog-body-text-line-height: #{vu-rem(24)};
+    --vu-dialog-footer-padding: #{vu-rem(16)} var(--vu-dialog-panel-padding-x) #{vu-rem(24)};
+    --vu-dialog-headerless-body-padding-top: #{vu-rem(24)};
+
+    position: fixed;
+    top: var(--vu-dialog-offset-top, 0);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    padding: var(--vu-dialog-padding);
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+    background-color: var(--vu-glob-color-black-60);
+    z-index: var(--vu-glob-z-index-modal);
+
+    &-content {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: var(--vu-dialog-align-items);
+        max-width: var(--vu-dialog-max-width);
+        height: 100%;
+        min-height: var(--vu-dialog-min-height);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &-panel {
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-height: var(--vu-dialog-panel-max-height);
+        min-height: inherit;
+        border-radius: var(--vu-dialog-border-radius);
+        background-color: var(--vu-dialog-bg-color);
+        animation: var(--vu-dialog-panel-animation);
+    }
+
+    &-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-shrink: 0;
+        padding: var(--vu-dialog-header-padding-y) var(--vu-dialog-header-padding-x);
+        background-color: var(--vu-dialog-header-bg-color);
+    }
+
+    &-header-start,
+    &-header-end {
+        display: flex;
+        align-items: flex-start;
+    }
+
+    &-header-end {
+        flex-shrink: 0;
+        margin-left: vu-rem(8);
+    }
+
+    &-header-title {
+        margin: vu-rem(0, 8, 0, 0);
+        font-weight: var(--vu-font-medium);
+        font-size: var(--vu-dialog-header-title-font-size);
+        line-height: var(--vu-dialog-header-title-line-height);
+        color: var(--vu-sem-color-on-surface-elevation-1);
+    }
+
+    &-header-title:last-child {
+        margin-right: 0;
+    }
+
+    &-header-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: vu-rem(0, 8, 0, 0);
+        border: none;
+        font-family: inherit;
+        letter-spacing: inherit;
+        color: var(--vu-sem-color-on-surface-elevation-2);
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+    }
+
+    &-header-button:last-child {
+        margin-right: 0;
+    }
+
+    &-body {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+        background-color: var(--vu-dialog-body-bg-color);
+    }
+
+    &-body-end {
+        @include vu-scrollbar(
+            $size: #{vu-rem(4)},
+            $fg-color: var(--vu-sem-color-inverse-elevation-2),
+            $bg-color: transparent,
+            $thumb-radius: #{vu-rem(4)},
+            $thumb-size: #{vu-rem(0)},
+            $thumb-border: #{vu-rem(0)} solid transparent,
+            $hover-fg-color: var(--vu-sem-color-inverse-elevation-1)
+        );
+
+        overflow-y: auto;
+        overflow-y: overlay;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 auto;
+        min-height: 0;
+        padding: var(--vu-dialog-body-end-padding);
+        -webkit-overflow-scrolling: touch;
+
+        .#{$vu-variable-prefix}dialog-body-start + & {
+            // .#{$vu-variable-prefix}dialog-body-start 구조가 있을 경우에만 상단 패딩 추가
+            // .#{$vu-variable-prefix}dialog-body-start의 접점까지 스크롤을 표시하기 위해 패딩 사용
+            padding-top: vu-rem(24);
+        }
+    }
+
+    &-body-end::-webkit-scrollbar-thumb {
+        min-height: vu-rem(100);
+    }
+
+    &-body-title {
+        display: block;
+        margin: vu-rem(0, 0, 4, 0);
+        font-weight: var(--vu-font-bold);
+        color: var(--vu-sem-color-on-surface-elevation-1);
+    }
+
+    &-body-text {
+        display: block;
+        margin: 0;
+        font-weight: var(--vu-font-regular);
+        color: var(--vu-sem-color-on-surface-elevation-2);
+    }  
+
+    &-body:first-child {
+        padding-top: var(--vu-dialog-headerless-body-padding-top);
+    }
+
+    &-body:first-child &-body-text:first-child {
+        text-align: center;
+    }
+
+    &-footer {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-shrink: 0;
+        padding: var(--vu-dialog-footer-padding);
+        margin-top: vu-rem(4);
+        background-color: var(--vu-dialog-footer-bg-color);
+    }
+
+    &-footer-buttons {
+        --vu-buttons-gap-x: #{vu-rem(8)};
+
+        display: flex;
+        flex-grow: var(--vu-dialog-footer-buttons-grow);
+    }
+
+    &-footer-button {
+        width: 100%;
+        min-width: vu-rem(128);
+    }
+
+    &-footer-close-button {
+        width: vu-rem(48);
+        margin-left: vu-rem(8);
+        text-align: right;
+        color: var(--vu-glob-color-white);
+    }
+
+    &-pagination {
+        margin-right: vu-rem(-16);
+        margin-left: vu-rem(-16);
+    }
+
+    // 크기
+    @each $size, $props in $vu-dialog-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 추가 기능
+    @each $addition, $props in $vu-dialog-additions {
+        &\{#{$addition}\} {
+            @each $prop, $value in $props {
+                @if (type-of($value) == map) {
+                    #{$prop} {
+                        @each $sub-prop, $sub-value in $value {
+                            #{$sub-prop}: #{$sub-value};
+                        }
+                    }
+                }
+                @else {
+                    #{$prop}: #{$value};
+                }
+            }
+        }
+    }
+}
+
+@include vu-media-breakpoint-only(xs) {
+    .#{$vu-variable-prefix}dialog {
+        --vu-dialog-header-padding-y: #{vu-rem(16)};
+    }
+
+    // 크기
+    @each $size, $props in $vu-dialog-only-xs-sizes {
+        .#{$vu-variable-prefix}dialog\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유형
+    @each $type, $props in $vu-dialog-only-xs-types {
+        .#{$vu-variable-prefix}dialog\<#{$type}\> {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
+
+@include vu-media-breakpoint-only(sm) {
+    // 크기
+    @each $size, $props in $vu-dialog-only-sm-sizes {
+        .#{$vu-variable-prefix}dialog\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
+
+@include vu-media-breakpoint-down(md) {
+    // 크기
+    @each $size, $props in $vu-dialog-down-md-sizes {
+        .#{$vu-variable-prefix}dialog\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
+
+@keyframes vu-dialog-zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes vu-dialog-slide-in-up {
+    0% {
+        transform: translateY(100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}

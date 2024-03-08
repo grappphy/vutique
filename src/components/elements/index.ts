@@ -6,3 +6,4 @@ export * from './a11y';
 export * from './checkbox';
 export * from './radio';
 export * from './chip';
+export * from './dialog';

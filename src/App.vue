@@ -14,6 +14,7 @@
         <vu-el-checkbox :size="'sm'" :control-type="'checkbox'" :label="'체크박스'" :use-label="true" />
         <vu-el-radio :size="'sm'" :control-type="'radio'" :label="'라디오'" :use-label="true" />
         <vu-el-chip :type="'filled'" :tag="'button'" :size="'sm'" :text="'칩'" :use-button="true" />
+        <vu-el-dialog :size="'sm'" />
     </vu-el-container>
 </template>
 
@@ -28,7 +29,8 @@ import {
     VuElBadge,
     VuElCheckbox,
     VuElRadio,
-    VuElChip
+    VuElChip,
+    VuElDialog
 } from './components/elements';
 
 export default defineComponent({
@@ -39,7 +41,8 @@ export default defineComponent({
         VuElBadge,
         VuElCheckbox,
         VuElRadio,
-        VuElChip
+        VuElChip,
+        VuElDialog
     }
 });
 </script>

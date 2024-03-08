@@ -141,6 +141,7 @@ export default defineComponent({
         }
     },
     setup(props, { emit }) {
+        // 클래스
         const classes = computed(() => {
             const defaultClass = 'vu-dialog';
 
@@ -168,3 +169,7 @@ export default defineComponent({
     }
 });
 </script>
+
+<style lang="scss">
+@import '../../../styles/components/dialog';
+</style>
