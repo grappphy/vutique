@@ -1,0 +1,14 @@
+@mixin vu-truncate($line: 1, $word-break: break-word) {
+    --vu-truncate-line: #{$line};
+    --vu-word-break: #{$word-break};
+  
+    overflow: hidden;
+    display: block;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: var(--vu-word-break);
+    -webkit-line-clamp: var(--vu-truncate-line);
+    -webkit-box-orient: vertical;
+}
+  
