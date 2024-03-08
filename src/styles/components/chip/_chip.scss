@@ -1,0 +1,125 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}chip {
+    --vu-chip-radius: #{vu-rem(2)};
+    --vu-chip-icon-gap-x: 0;
+    --vu-chip-text-font-size: #{vu-rem(12)};
+    --vu-chip-text-line-height: #{vu-rem(18)};
+    --vu-chip-text-letter-space: -0.02em;
+    --vu-chip-text-color: var(--vu-sem-color-on-surface-elevation-2);
+    --vu-chip-delete-gap-x: #{vu-rem(4)};
+    --vu-chip-delete-icon-size: #{vu-rem(16)};
+    --vu-chip-delete-color: var(--vu-sem-color-inverse-elevation-2);
+
+    position: relative;
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    min-width: 0;
+    height: var(--vu-chip-height);
+    padding: var(--vu-chip-padding);
+    border: 0;
+    border-radius: var(--vu-chip-radius);
+    background-color: var(--vu-chip-bg-color);
+    font-family: var(--vu-font-family-base);
+    font-weight: var(--vu-font-bold);
+    box-shadow: inset 0 0 0 var(--vu-chip-border-width) var(--vu-chip-border-color);
+    box-sizing: border-box;
+
+    &-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        cursor: pointer;
+        pointer-events: inherit;
+    }
+
+    &-icon {
+        --vu-icon-size: var(--vu-chip-icon-size);
+        margin-right: var(--vu-chip-icon-gap-x);
+    }
+
+    &-text {
+        --vu-text-font-size: var(--vu-chip-text-font-size);
+        --vu-text-line-height: var(--vu-chip-text-line-height);
+        --vu-text-letter-space: var(--vu-chip-text-letter-space);
+        --vu-text-color: var(--vu-chip-text-color);
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    
+    &-delete {
+        --vu-icon-size: var(--vu-chip-delete-icon-size);
+
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: var(--vu-chip-delete-gap-x);
+        color: var(--vu-chip-delete-color);
+        outline: none;
+    }
+
+    &-delete:focus-visible {
+        --vu-chip-delete-color: var(--vu-sem-color-inverse-elevation-1);
+    }
+
+    &-delete:hover {
+        --vu-chip-delete-color: var(--vu-sem-color-inverse-elevation-1);
+    }
+
+    &-delete:active {
+        transform: scale(.9);
+    }
+
+    &\:readonly,
+    &\:disabled {
+        cursor: default;
+        pointer-events: none;
+    }
+
+    &\:disabled {
+        --vu-chip-text-color: var(--vu-sem-color-disabled-variant-1);
+        --vu-chip-delete-color: var(--vu-sem-color-inverse-elevation-5);
+    }
+
+    // 유형
+    @each $type, $states in $vu-chip-types {
+        &\<#{$type}\> {
+            @each $state, $state-value in $states {
+                @if $state == 'enabled' {
+                    @each $prop, $prop-value in $state-value {
+                        #{$prop}: #{$prop-value};
+                    }
+                }
+                @else {
+                    &#{$state} {
+                        @each $prop, $prop-value in $state-value {
+                            #{$prop}: #{$prop-value};
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-chip-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}

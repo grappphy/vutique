@@ -13,6 +13,7 @@
         <vu-el-badge :type="'filled'" :size="'sm'" :color="'primary'" :text="'뱃지'" :text-color="'white'" />
         <vu-el-checkbox :size="'sm'" :control-type="'checkbox'" :label="'체크박스'" :use-label="true" />
         <vu-el-radio :size="'sm'" :control-type="'radio'" :label="'라디오'" :use-label="true" />
+        <vu-el-chip :type="'filled'" :tag="'button'" :size="'sm'" :text="'칩'" :use-button="true" />
     </vu-el-container>
 </template>
 
@@ -20,7 +21,15 @@
 import { defineComponent } from 'vue';
 
 // Elements
-import { VuElContainer, VuElButtons, VuElButton, VuElBadge, VuElCheckbox, VuElRadio } from './components/elements';
+import {
+    VuElContainer,
+    VuElButtons,
+    VuElButton,
+    VuElBadge,
+    VuElCheckbox,
+    VuElRadio,
+    VuElChip
+} from './components/elements';
 
 export default defineComponent({
     components: {
@@ -29,7 +38,8 @@ export default defineComponent({
         VuElButton,
         VuElBadge,
         VuElCheckbox,
-        VuElRadio
+        VuElRadio,
+        VuElChip
     }
 });
 </script>

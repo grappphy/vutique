@@ -1,0 +1,66 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 칩
+//# ───────────────────────────────────
+
+//! 칩 유형 맵
+/// @type Map
+$vu-chip-types: (
+    filled: (
+        'enabled': (
+            --vu-chip-bg-color: var(--vu-sem-color-inverse-elevation-6)
+        ),
+        ':has(.vu-chip-button:focus-visible)': (
+            --vu-chip-border-width: 2px,
+            --vu-chip-border-color: var(--vu-glob-color-gray400)
+        ),
+        ':has(.vu-chip-button:active)': (
+            --vu-chip-bg-color: var(--vu-sem-color-inverse-elevation-4),
+            --vu-chip-border-color: none
+        ),
+        '\:disabled': (
+            --vu-chip-bg-color: var(--vu-sem-color-disabled-variant-8),
+            --vu-chip-border-color: none
+        )
+    ),
+    outline: (
+        'enabled': (
+            --vu-chip-bg-color: var(--vu-sem-color-neutral-variant-3),
+            --vu-chip-border-width: 1px,
+            --vu-chip-border-color: var(--vu-sem-color-border)
+        ),
+        ':has(.vu-chip-button:focus-visible)': (
+            --vu-chip-border-width: 2px,
+            --vu-chip-border-color: var(--vu-glob-color-gray400)
+        ),
+        ':has(.vu-chip-button:active)': (
+            --vu-chip-bg-color: var(--vu-sem-color-neutral-variant-3-pressed),
+            --vu-chip-border-width: 1px,
+            --vu-chip-border-color: var(--vu-glob-color-gray400)
+        ),
+        '\:disabled': (
+            --vu-chip-bg-color: var(--vu-sem-color-disabled-variant-3),
+            --vu-chip-border-color: var(--vu-sem-color-border),
+        )
+    )
+) !default;
+
+
+
+//! 칩 크기 맵
+/// @type Map
+$vu-chip-sizes: (
+    sm: (
+        --vu-chip-height: #{vu-rem(28)},
+        --vu-chip-padding: #{vu-rem(5, 8)},
+        --vu-chip-icon-size: #{vu-rem(14)}
+    ),
+    md: (
+        --vu-chip-height: #{vu-rem(32)},
+        --vu-chip-padding: #{vu-rem(7, 12)},
+        --vu-chip-icon-size: #{vu-rem(16)}
+    )
+) !default;
