@@ -1,0 +1,150 @@
+@use "config" as *;
+
+.vu-dropdown {
+    --vu-dropdown-button-cursor: pointer;
+    --vu-dropdown-select-option-text-color: var(--vu-sem-color-on-surface-elevation-2);
+
+    position: relative;
+    vertical-align: top;
+    display: inline-flex;
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+
+    &-button {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: var(--vu-dropdown-button-height);
+        padding: var(--vu-dropdown-button-padding);
+        margin: 0;
+        border: none;
+        border-radius: var(--vu-dropdown-button-radius);
+        text-align: left;
+        font-family: inherit;
+        font-size: var(--vu-dropdown-button-font-size);
+        line-height: var(--vu-dropdown-button-line-height);
+        letter-spacing: inherit;
+        color: var(--vu-dropdown-button-text-color);
+        background-color: var(--vu-dropdown-button-bg-color);
+        box-shadow: inset 0 0 0 var(--vu-dropdown-button-border-width) var(--vu-dropdown-button-border-color);
+        outline: none;
+        cursor: var(--vu-dropdown-button-cursor);
+    }
+
+    &-button-icon {
+        --vu-icon-size: var(--vu-dropdown-button-icon-size);
+        margin-right: var(--vu-dropdown-button-icon-gap-x);
+    }
+
+    &-button-text {
+        @include vu-truncate();
+    }
+
+    &-button-arrow {
+        --vu-icon-size: var(--vu-dropdown-button-arrow-size);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: var(--vu-dropdown-button-arrow-gap-x);
+    }
+
+    &-button-up-arrow,
+    &-button-down-arrow {
+        margin-left: vu-rem(2);
+    }
+
+    &-button-up-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: vu-rem(0, 3, 3, 3);
+        border-color: transparent transparent var(--vu-sem-color-placeholder) transparent;
+    }
+
+    &-button-down-arrow {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: vu-rem(3, 3, 0, 3);
+        border-color: var(--vu-sem-color-placeholder) transparent transparent transparent;
+    }
+
+    &-button-reset {
+        margin-right: vu-rem(12);
+    }
+
+    &-selectbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background-color: transparent;
+        font-size: vu-rem(14);
+        color: transparent;
+        outline: 0;
+        -webkit-appearance: none;
+
+        option {
+        color: var(--vu-dropdown-select-option-text-color);
+        }
+    }
+
+    &-menu {
+        --vu-menu-min-width: var(--vu-dropdown-menu-min-width);
+    }
+
+    &-menu-button-icon {
+        margin-right: vu-rem(8);
+        margin-left: vu-rem(-4);
+    }
+
+    &-menu-button-text {
+        --vu-text-line-height: #{vu-rem(20)};
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    // 크기
+    @each $size, $props in $vu-dropdown-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 상태
+    @each $state, $props in $vu-dropdown-states {
+        &#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유형
+    @each $type, $states in $vu-dropdown-types {
+        &\<#{$type}\> {
+            @each $state, $state-value in $states {
+                @if $state == 'enable' {
+                    @each $prop, $prop-value in $state-value {
+                        #{$prop}: #{$prop-value};
+                    }
+                }
+                @else {
+                    &#{$state} {
+                        @each $prop, $prop-value in $state-value {
+                            #{$prop}: #{$prop-value};
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

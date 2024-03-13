@@ -23,6 +23,19 @@
                 </div>
             </template>
         </vu-el-menu>
+        <vu-el-dropdown :type="'outline'" :size="'lg'">
+            <template #button>
+                <vu-el-dropdown-button :text="'선택'" />
+            </template>
+
+            <template #menu>
+                <vu-el-dropdown-menu :placement="'bottom-start'">
+                    <vu-el-dropdown-menu-item>
+                        <vu-el-dropdown-menu-button :text="'메뉴'" />
+                    </vu-el-dropdown-menu-item>
+                </vu-el-dropdown-menu>
+            </template>
+        </vu-el-dropdown>
     </vu-el-container>
 </template>
 
@@ -41,7 +54,12 @@ import {
     VuElDialog,
     VuElMenu,
     VuElMenuItem,
-    VuElMenuButton
+    VuElMenuButton,
+    VuElDropdown,
+    VuElDropdownButton,
+    VuElDropdownMenu,
+    VuElDropdownMenuItem,
+    VuElDropdownMenuButton
 } from './components/elements';
 
 export default defineComponent({
@@ -55,7 +73,12 @@ export default defineComponent({
         VuElChip,
         VuElMenu,
         VuElMenuItem,
-        VuElMenuButton
+        VuElMenuButton,
+        VuElDropdown,
+        VuElDropdownButton,
+        VuElDropdownMenu,
+        VuElDropdownMenuItem,
+        VuElDropdownMenuButton
     }
 });
 </script>

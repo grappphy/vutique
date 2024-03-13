@@ -8,3 +8,4 @@ export * from './radio';
 export * from './chip';
 export * from './dialog';
 export * from './menu';
+export * from './dropdown';

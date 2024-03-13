@@ -68,3 +68,7 @@ export default defineComponent({
     }
 });
 </script>
+
+<style lang="scss">
+@import '../../../styles/components/dropdown';
+</style>

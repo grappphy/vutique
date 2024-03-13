@@ -1,0 +1,106 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 드롭다운
+//# ───────────────────────────────────
+
+//! 드롭다운 크기 맵
+/// @type Map
+$vu-dropdown-sizes: (
+    sm: (
+        --vu-dropdown-button-height: #{vu-rem(32)},
+        --vu-dropdown-button-padding: #{vu-rem(0, 12)},
+        --vu-dropdown-button-radius: #{vu-rem(8)},
+        --vu-dropdown-button-font-size: #{vu-rem(12)},
+        --vu-dropdown-button-line-height: #{vu-rem(18)},
+        --vu-dropdown-button-icon-size: #{vu-rem(16)},
+        --vu-dropdown-button-arrow-size: #{vu-rem(12)},
+        --vu-dropdown-button-arrow-gap-x: #{vu-rem(8)}
+    ),
+    lg: (
+        --vu-dropdown-button-height: #{vu-rem(44)},
+        --vu-dropdown-button-padding: #{vu-rem(0, 16)},
+        --vu-dropdown-button-radius: #{vu-rem(12)},
+        --vu-dropdown-button-font-size: #{vu-rem(14)},
+        --vu-dropdown-button-line-height: #{vu-rem(20)},
+        --vu-dropdown-button-icon-size: #{vu-rem(20)},
+        --vu-dropdown-button-arrow-size: #{vu-rem(16)},
+        --vu-dropdown-button-arrow-gap-x: #{vu-rem(12)}
+    )
+) !default;
+
+
+
+//! 드롭다운 상태 맵
+/// @type Map
+$vu-dropdown-states: (
+    ':focus-within': (
+        --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-2)
+    ),
+    '\:active': (
+        --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-2)
+    ),
+    '\:disabled': (
+        --vu-dropdown-button-text-color: var(--vu-sem-color-disabled-variant-1),
+        --vu-dropdown-button-cursor: default
+    )
+) !default;
+
+
+
+//! 드롭다운 유형 맵
+/// @type Map
+$vu-dropdown-types: (
+    text: (
+        'enable': (
+            --vu-dropdown-button-padding: 0,
+            --vu-dropdown-button-font-size: #{vu-rem(14)},
+            --vu-dropdown-button-line-height: #{vu-rem(20)},
+            --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-3),
+            --vu-dropdown-button-bg-color: transparent,
+            --vu-dropdown-button-icon-gap-x: #{vu-rem(4)},
+            --vu-dropdown-button-arrow-size: #{vu-rem(16)},
+            --vu-dropdown-button-arrow-gap-x: #{vu-rem(2)}
+        )
+    ),
+    outline: (
+        'enable': (
+            --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-2),
+            --vu-dropdown-button-bg-color: var(--vu-sem-color-neutral-variant-3),
+            --vu-dropdown-button-border-width: 1px,
+            --vu-dropdown-button-border-color: var(--vu-sem-color-border),
+            --vu-dropdown-button-icon-gap-x: #{vu-rem(4)},
+            --vu-dropdown-menu-min-width: 100%
+        ),
+        ':focus-within': (
+            --vu-dropdown-button-border-width: 2px,
+            --vu-dropdown-button-border-color: var(--vu-glob-color-gray400)
+        ),
+        '\:active': (
+            --vu-dropdown-button-border-width: 2px,
+            --vu-dropdown-button-border-color: var(--vu-glob-color-gray400)
+        ),
+        '\:disabled': (
+            --vu-dropdown-button-bg-color: var(--vu-sem-color-disabled-variant-3)
+        )
+    ),
+    filled: (
+        'enable': (
+            --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-2),
+            --vu-dropdown-button-bg-color: var(--vu-sem-color-neutral-variant-2),
+            --vu-dropdown-button-border-width: 0,
+            --vu-dropdown-button-border-color: var(--vu-sem-color-border),
+            --vu-dropdown-button-icon-gap-x: #{vu-rem(4)},
+            --vu-dropdown-menu-min-width: 100%
+        )
+    ),
+    icon: (
+        'enable': (
+            --vu-dropdown-button-text-color: var(--vu-sem-color-on-surface-elevation-4),
+            --vu-dropdown-button-height: auto,
+            --vu-dropdown-button-padding: 0
+        )
+    )
+) !default;
