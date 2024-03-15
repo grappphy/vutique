@@ -1,0 +1,21 @@
+.vu-stroke {
+    &-svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    &-rect {
+        width: calc(100% - var(--vu-stroke-width));
+        height: calc(100% - var(--vu-stroke-width));
+        transform-origin: center;
+        stroke-width: var(--vu-stroke-width);
+        x: calc(var(--vu-stroke-width) / 2);
+        y: calc(var(--vu-stroke-width) / 2);
+        rx: var(--vu-stroke-radius);
+        ry: var(--vu-stroke-radius);
+    }
+
+    &-stop {
+        stop-color: var(--vu-color, var(--vu-stroke-start-color));
+    }
+}

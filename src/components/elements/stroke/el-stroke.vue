@@ -17,3 +17,7 @@ export default defineComponent({
     name: 'vu-el-stroke'
 });
 </script>
+
+<style lang="scss">
+@import '../../../styles/components/stroke';
+</style>
