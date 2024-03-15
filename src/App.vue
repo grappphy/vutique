@@ -23,6 +23,9 @@
                 </div>
             </template>
         </vu-el-menu>
+
+        <vu-el-input :type="'filled'" :size="'lg'" :control-type="'text'" :is-disabled="true" />
+
         <vu-el-dropdown :type="'outline'" :size="'lg'">
             <template #button>
                 <vu-el-dropdown-button :text="'선택'" />
@@ -59,7 +62,8 @@ import {
     VuElDropdownButton,
     VuElDropdownMenu,
     VuElDropdownMenuItem,
-    VuElDropdownMenuButton
+    VuElDropdownMenuButton,
+    VuElInput
 } from './components/elements';
 
 export default defineComponent({
@@ -78,7 +82,8 @@ export default defineComponent({
         VuElDropdownButton,
         VuElDropdownMenu,
         VuElDropdownMenuItem,
-        VuElDropdownMenuButton
+        VuElDropdownMenuButton,
+        VuElInput
     }
 });
 </script>

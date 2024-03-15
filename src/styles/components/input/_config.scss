@@ -1,0 +1,85 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 인풋
+//# ───────────────────────────────────
+
+//! 인풋 유형 맵
+/// @type Map
+$vu-input-types: (
+    outline: (
+        --vu-input-bg-color: var(--vu-sem-color-neutral-variant-3),
+        --vu-input-box-shadow: inset 0 0 0 1px var(--vu-sem-color-border)
+    ),
+    filled: (
+        --vu-input-bg-color: var(--vu-sem-color-neutral-variant-2),
+        --vu-input-box-shadow: none
+    )
+) !default;
+
+
+
+//! 인풋 크기 맵
+/// @type Map
+$vu-input-sizes: (
+    sm: (
+        --vu-input-height: #{vu-rem(32)},
+        --vu-input-padding: #{vu-rem(0, 12)},
+        --vu-input-radius: #{vu-rem(8)},
+        --vu-input-font-size: #{vu-rem(12)},
+        --vu-input-line-height: #{vu-rem(18)},
+        --vu-input-clear-button-size: #{vu-rem(16)},
+        --vu-input-search-button-size: #{vu-rem(16)}
+    ),
+    lg: (
+        --vu-input-height: #{vu-rem(44)},
+        --vu-input-padding: #{vu-rem(0, 16)},
+        --vu-input-radius: #{vu-rem(12)},
+        --vu-input-font-size: #{vu-rem(14)},
+        --vu-input-line-height: #{vu-rem(20)},
+        --vu-input-clear-button-size: #{vu-rem(16)},
+        --vu-input-search-button-size: #{vu-rem(20)}
+    )
+) !default;
+
+
+
+//! 인풋 유효성 맵
+/// @type Map
+$vu-input-validations: (
+    error: (
+        --vu-input-box-shadow: inset 0 0 0 2px var(--vu-input-validation-color),
+        --vu-input-validation-color: var(--vu-sem-color-error)
+    ),
+    warning: (
+        --vu-input-box-shadow: inset 0 0 0 2px var(--vu-input-validation-color),
+        --vu-input-validation-color: var(--vu-sem-color-warning)
+    ),
+    success: (
+        --vu-input-box-shadow: inset 0 0 0 2px var(--vu-input-validation-color),
+        --vu-input-validation-color: var(--vu-sem-color-success)
+    ),
+    information: (
+        --vu-input-box-shadow: inset 0 0 0 2px var(--vu-input-validation-color),
+        --vu-input-validation-color: var(--vu-sem-color-information)
+    )
+  
+) !default;
+
+
+
+//! 인풋 상태 맵
+/// @type Map
+$vu-input-states: (
+    '\\:readonly': (
+        pointer-events: none
+    ),
+    '\\:disabled': (
+        --vu-input-bg-color: var(--vu-sem-color-disabled-variant-3),
+        --vu-input-text-color: var(--vu-sem-color-disabled-variant-1),
+        --vu-input-placeholder-text-color: var(--vu-sem-color-disabled-variant-1),
+        pointer-events: none
+    )
+) !default;

@@ -1,0 +1,142 @@
+@use "config" as *;
+
+.vu-input {
+    --vu-input-text-color: var(--vu-sem-color-on-surface-elevation-2);
+    --vu-input-placeholder-text-color: var(--vu-sem-color-placeholder);
+    --vu-input-validation-color: var(--vu-glob-color-gray400);
+
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    height: var(--vu-input-height);
+    width: 100%;
+    padding: var(--vu-input-padding);
+    border-radius: var(--vu-input-radius);
+    background-color: var(--vu-input-bg-color);
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+    caret-color: var(--vu-sem-color-brand-primary);
+    box-shadow: var(--vu-input-box-shadow);
+    box-sizing: border-box;
+
+    &:focus-within {
+        --vu-input-box-shadow: inset 0 0 0 2px var(--vu-input-validation-color);
+    }
+
+    &-start,
+    &-end {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+    }
+    
+    &-start {
+        flex-grow: 1;
+    }
+
+    &-end {
+        flex-shrink: 0;
+        margin-left: vu-rem(8);
+    }
+
+    &-control {
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: var(--vu-input-font-size);
+        line-height: var(--vu-input-line-height);
+        letter-spacing: inherit;
+        color: var(--vu-input-text-color);
+        outline: 0;
+        box-sizing: border-box;
+        -webkit-text-fill-color: var(--vu-input-text-color);
+    }
+
+    &-control::placeholder {
+        color: var(--vu-input-placeholder-text-color);
+        -webkit-text-fill-color: var(--vu-input-placeholder-text-color);
+    }
+
+    &-control::-webkit-input-placeholder {
+        color: var(--vu-input-placeholder-text-color);
+        -webkit-text-fill-color: var(--vu-input-placeholder-text-color);
+    }
+
+    &-control::-moz-placeholder {
+        color: var(--vu-input-placeholder-text-color);
+    }
+
+    &-control[type=search]::-webkit-search-decoration,
+    &-control[type=search]::-webkit-search-cancel-button,
+    &-control[type=search]::-webkit-search-results-button,
+    &-control[type=search]::-webkit-search-results-decoration {
+        display: none;
+    }
+
+    &-clear-button,
+    &-search-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    &-clear-button {
+        --vu-icon-size: var(--vu-input-clear-button-size);
+        color: var(--vu-sem-color-inverse-elevation-2);
+    }
+
+    &-search-button {
+        --vu-icon-size: var(--vu-input-search-button-size);
+        color: var(--vu-sem-color-on-surface-elevation-2);
+    }
+
+    &-clear-button + &-search-button {
+        margin-left: vu-rem(8);
+    }
+
+    // 유형
+    @each $type, $props in $vu-input-types {
+        &\<#{$type}\> {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-input-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유효성
+    @each $validation, $props in $vu-input-validations {
+        &\{#{$validation}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 상태
+    @each $state, $props in $vu-input-states {
+        &#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
