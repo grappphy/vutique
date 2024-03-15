@@ -1,0 +1,56 @@
+//! 배치 맵
+/// @type Map
+$vu-placements: (
+  top: (
+    --vu-placement-bottom: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-left: 50%,
+    transform: translateX(-50%)
+  ),
+  top-start: (
+    --vu-placement-bottom: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-left: var(--vu-placement-offset-x)
+  ),
+  top-end: (
+    --vu-placement-bottom: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-right: var(--vu-placement-offset-x)
+  ),
+  bottom: (
+    --vu-placement-top: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-left: 50%,
+    transform: translateX(-50%)
+  ),
+  bottom-start: (
+    --vu-placement-top: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-left: var(--vu-placement-offset-x)
+  ),
+  bottom-end: (
+    --vu-placement-top: calc(100% + var(--vu-placement-gap-y) + var(--vu-placement-offset-y)),
+    --vu-placement-right: var(--vu-placement-offset-x)
+  ),
+  left: (
+    --vu-placement-top: 50%,
+    --vu-placement-right: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+    transform: translateY(-50%)
+  ),
+  left-start: (
+    --vu-placement-top: var(--vu-placement-offset-y),
+    --vu-placement-right: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+  ),
+  left-end: (
+    --vu-placement-bottom: var(--vu-placement-offset-y),
+    --vu-placement-right: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+  ),
+  right: (
+    --vu-placement-top: 50%,
+    --vu-placement-left: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+    transform: translateY(-50%)
+  ),
+  right-start: (
+    --vu-placement-top: var(--vu-placement-offset-y),
+    --vu-placement-left: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+  ),
+  right-end: (
+    --vu-placement-bottom: var(--vu-placement-offset-y),
+    --vu-placement-left: calc(100% + var(--vu-placement-gap-x) + var(--vu-placement-offset-x)),
+  ),
+) !default;

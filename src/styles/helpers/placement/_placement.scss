@@ -1,0 +1,15 @@
+@use "config" as *;
+
+@each $placement, $props in $vu-placements {
+    [data-vu-placement=#{$placement}] {
+        position: absolute;
+        top:  var(--vu-placement-top);
+        right: var(--vu-placement-right);
+        bottom:  var(--vu-placement-bottom);
+        left: var(--vu-placement-left);
+
+        @each $prop, $value in $props {
+            #{$prop}: #{$value};
+        }
+    }
+}
