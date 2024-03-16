@@ -30,19 +30,15 @@
             <template #button>
                 <vu-el-dropdown-button :text="'선택'" />
             </template>
-
-            <template #menu>
-                <vu-el-dropdown-menu :placement="'bottom-start'">
-                    <vu-el-dropdown-menu-item>
-                        <vu-el-dropdown-menu-button :text="'메뉴'" />
-                    </vu-el-dropdown-menu-item>
-                </vu-el-dropdown-menu>
-            </template>
         </vu-el-dropdown>
 
         <vu-el-switch :size="'sm'" :control-type="'checkbox'" :label="'스위치'" :use-label="true" />
 
         <vu-el-symbol :type="'circle'" :size="'40'" />
+
+        <div style="position: absolute">
+            <vu-el-tooltip :text="'툴팁'" :placement="'bottom-start'" :is-active="true" />
+        </div>
     </vu-el-container>
 </template>
 
@@ -69,7 +65,8 @@ import {
     VuElDropdownMenuButton,
     VuElInput,
     VuElSwitch,
-    VuElSymbol
+    VuElSymbol,
+    VuElTooltip
 } from './components/elements';
 
 export default defineComponent({
@@ -86,12 +83,10 @@ export default defineComponent({
         VuElMenuButton,
         VuElDropdown,
         VuElDropdownButton,
-        VuElDropdownMenu,
-        VuElDropdownMenuItem,
-        VuElDropdownMenuButton,
         VuElInput,
         VuElSwitch,
-        VuElSymbol
+        VuElSymbol,
+        VuElTooltip
     }
 });
 </script>

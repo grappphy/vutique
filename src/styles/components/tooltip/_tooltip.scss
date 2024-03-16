@@ -1,0 +1,71 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}tooltip {
+    --vu-placement-gap-y: #{vu-rem(8)};
+    --vu-placement-gap-x: #{vu-rem(8)};
+    --vu-placement-offset-y: 0px;
+    --vu-placement-offset-x: 0px;
+    --vu-tooltip-transition-duration: 0.3s;
+    --vu-tooltip-transition-timing-function: ease-in-out;
+    --vu-tooltip-content-radius: #{vu-rem(2)};
+    --vu-tooltip-content-bg-color: var(--vu-sem-color-neutral-variant-1);
+    --vu-tooltip-text-font-size: #{vu-rem(12)};
+    --vu-tooltip-text-line-height: #{vu-rem(18)};
+    --vu-tooltip-text-color: var(--vu-glob-color-white);
+    --vu-tooltip-z-index: var(--vu-glob-z-index-tooltip);
+    --vu-tooltip-caret-width: #{vu-rem(6)};
+    --vu-tooltip-caret-height: #{vu-rem(4)};
+    --vu-tooltip-caret-color: var(--vu-tooltip-content-bg-color);
+    --vu-tooltip-caret-top: auto;
+    --vu-tooltip-caret-right: auto;
+    --vu-tooltip-caret-bottom: auto;
+    --vu-tooltip-caret-left: auto;
+
+    visibility: hidden;
+    opacity: 0;
+    display: block;
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+    transition:
+        visibility var(--vu-tooltip-transition-timing-function) var(--vu-tooltip-transition-duration),
+        opacity var(--vu-tooltip-transition-timing-function) var(--vu-tooltip-transition-duration)
+    ;
+    z-index: var(--vu-tooltip-z-index);
+
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        top: var(--vu-tooltip-caret-top);
+        right: var(--vu-tooltip-caret-right);
+        bottom: var(--vu-tooltip-caret-bottom);
+        left: var(--vu-tooltip-caret-left);
+        border-top: var(--vu-tooltip-caret-border-top);
+        border-right: var(--vu-tooltip-caret-border-right);
+        border-bottom: var(--vu-tooltip-caret-border-bottom);
+        border-left: var(--vu-tooltip-caret-border-left);
+        transform: inherit;
+    }
+
+    &-content {
+        display: block;
+        padding: vu-rem(8, 12);
+        background-color: var(--vu-tooltip-content-bg-color);
+        border-radius: var(--vu-tooltip-content-radius);
+    }
+
+    &-text {
+        display: block;
+        font-size: var(--vu-tooltip-text-font-size);
+        line-height: var(--vu-tooltip-text-line-height);
+        color: var(--vu-tooltip-text-color);
+        white-space: nowrap;
+    }
+
+    &\:active {
+        visibility: visible;
+        opacity: 1;
+    }
+}

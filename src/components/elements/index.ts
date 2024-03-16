@@ -15,3 +15,4 @@ export * from './switch';
 export * from './symbol';
 export * from './text';
 export * from './textarea';
+export * from './tooltip';
