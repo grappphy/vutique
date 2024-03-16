@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-input {
+.#{$vu-variable-prefix}input {
     --vu-input-text-color: var(--vu-sem-color-on-surface-elevation-2);
     --vu-input-placeholder-text-color: var(--vu-sem-color-placeholder);
     --vu-input-validation-color: var(--vu-glob-color-gray400);

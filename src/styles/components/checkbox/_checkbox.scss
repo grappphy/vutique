@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-checkbox {
+.#{$vu-variable-prefix}checkbox {
     --vu-checkbox-box-shadow: inset 0 0 0 1px var(--vu-sem-color-border);
     --vu-checkbox-bg-color: var(--vu-sem-color-neutral-variant-3);
     --vu-checkbox-cursor: pointer;

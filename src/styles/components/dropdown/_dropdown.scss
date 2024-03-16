@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-dropdown {
+.#{$vu-variable-prefix}dropdown {
     --vu-dropdown-button-cursor: pointer;
     --vu-dropdown-select-option-text-color: var(--vu-sem-color-on-surface-elevation-2);
 

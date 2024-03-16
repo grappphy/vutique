@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-symbol {
+.#{$vu-variable-prefix}symbol {
     --vu-symbol-image-top: 0;
     --vu-symbol-image-left: 0;
     --vu-symbol-image-width: 100%;

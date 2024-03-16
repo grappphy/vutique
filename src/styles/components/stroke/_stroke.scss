@@ -1,4 +1,6 @@
-.vu-stroke {
+@use "config" as *;
+
+.#{$vu-variable-prefix}stroke {
     &-svg {
         width: 100%;
         height: 100%;

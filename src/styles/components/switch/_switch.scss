@@ -1,6 +1,6 @@
 @use "config" as *;
 
-.vu-switch {
+.#{$vu-variable-prefix}switch {
     --vu-switch-bg-color: var(--vu-sem-color-neutral-variant-4);
     --vu-switch-caret-color: var(--vu-glob-color-white);
     --vu-switch-caret-transform: translate(calc(-50% - ((var(--vu-switch-width) - var(--vu-switch-caret-size)) - (var(--vu-switch-height) - var(--vu-switch-caret-size))) / 2), -50%);
