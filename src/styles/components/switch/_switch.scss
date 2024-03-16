@@ -1,0 +1,112 @@
+@use "config" as *;
+
+.vu-switch {
+    --vu-switch-bg-color: var(--vu-sem-color-neutral-variant-4);
+    --vu-switch-caret-color: var(--vu-glob-color-white);
+    --vu-switch-caret-transform: translate(calc(-50% - ((var(--vu-switch-width) - var(--vu-switch-caret-size)) - (var(--vu-switch-height) - var(--vu-switch-caret-size))) / 2), -50%);
+    --vu-switch-cursor: pointer;
+    --vu-switch-caret-transition-timing-function: ease-in-out;
+    --vu-switch-caret-transition-duration: 0.3s;
+    --vu-switch-label-gap: #{vu-rem(0, 0, 0, 8)};
+    --vu-switch-label-color: var(--vu-sem-color-on-surface-elevation-2);
+
+    position: relative;
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+
+    &-control {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: var(--vu-switch-width);
+        height: var(--vu-switch-height);
+        margin: 0;
+        border: none;
+        border-radius: var(--vu-switch-height);
+        background-color: var(--vu-switch-bg-color);
+        outline: none;
+        appearance: none;
+        cursor: var(--vu-switch-cursor);
+    }
+
+    &-control::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: var(--vu-switch-caret-size);
+        height: var(--vu-switch-caret-size);
+        background-color: var(--vu-switch-caret-color);
+        border-radius: 50%;
+        transform: var(--vu-switch-caret-transform);
+        transition: transform var(--vu-switch-caret-transition-timing-function) var(--vu-switch-caret-transition-duration);
+    }
+
+    &-label {
+        padding: var(--vu-switch-label-gap);
+        font-size: var(--vu-switch-label-font-size);
+        line-height: var(--vu-switch-label-line-height);
+        color: var(--vu-switch-label-color);
+        word-break: break-word;
+        cursor: var(--vu-switch-cursor);
+    }
+
+    // 컨트롤 상태
+    @each $state, $props in $vu-switch-control-states {
+        &-control#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-switch-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 상태
+    @each $state, $props in $vu-switch-states {
+        &#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 정렬
+    @each $align, $props in $vu-switch-aligns {
+        &\{#{$align}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 추가 기능
+    @each $addition, $props in $vu-switch-additions {
+        &\{#{$addition}\} {
+            @each $prop, $value in $props {
+                @if (type-of($value) == map) {
+                    #{$prop} {
+                        @each $sub-prop, $sub-value in $value {
+                            #{$sub-prop}: #{$sub-value};
+                        }
+                    }
+                }
+                @else {
+                    #{$prop}: #{$value};
+                }
+            }
+        }
+    }
+}

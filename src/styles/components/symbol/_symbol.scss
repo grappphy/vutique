@@ -1,0 +1,130 @@
+@use "config" as *;
+
+.vu-symbol {
+    --vu-symbol-image-top: 0;
+    --vu-symbol-image-left: 0;
+    --vu-symbol-image-width: 100%;
+    --vu-symbol-image-height: 100%;
+    --vu-symbol-stroke-width: 0px;
+    --vu-skeleton-radius: 50%;
+
+    position: relative;
+    display: inline-flex;
+    width: var(--vu-symbol-size);
+    border-radius: var(--vu-symbol-border-radius);
+    z-index: 1;
+
+    &::before {
+        content: '';
+        display: block;
+        padding-top: var(--vu-symbol-ratio);
+    }
+
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: var(--vu-color, var(--vu-symbol-color));
+        border-radius: inherit;
+        transform: translate(-50%, -50%);
+    }
+
+    &-icon {
+        --vu-icon-size: var(--vu-symbol-icon-size);
+        --vu-icon-bg-color:
+            linear-gradient(var(--vu-bg-color), var(--vu-bg-color)),
+            linear-gradient(var(--vu-sem-color-surface-elevation-indie1), var(--vu-sem-color-surface-elevation-indie1))
+        ;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: var(--vu-symbol-border-radius);
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    &-icon\{stroke\} {
+        width: calc(100% - var(--vu-symbol-stroke-width) * 4);
+        height: calc(100% - var(--vu-symbol-stroke-width) * 4);
+    }
+
+    &-thumbnail {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        box-sizing: border-box;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    &-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        box-shadow: inset 0 0 0 1px var(--vu-sem-color-inverse-variant-3);
+        z-index: 1;
+    }
+
+    &-thumbnail\{stroke\} {
+        width: calc(100% - var(--vu-symbol-stroke-width) * 2);
+        height: calc(100% - var(--vu-symbol-stroke-width) * 2);
+        border: var(--vu-symbol-stroke-width) solid transparent;
+    }
+
+    &-thumbnail-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
+        object-fit: cover;
+    }
+
+    &-stroke {
+        --vu-stroke-width: var(--vu-symbol-stroke-width);
+        --vu-stroke-radius: calc(var(--vu-symbol-size) / 2);
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+    }
+
+    &\{stroke\}:after {
+        width: calc(100% - var(--vu-symbol-stroke-width) * 4);
+        height: calc(100% - var(--vu-symbol-stroke-width) * 4);
+    }
+
+    @each $type, $map in $vu-symbol-types {
+        &\<#{$type}\> {
+            @each $property, $value in $map {
+                #{$property}: #{$value};
+            }
+        }
+    }
+
+    @each $size, $map in $vu-symbol-sizes {
+        &\{#{$size}\} {
+            @each $property, $value in $map {
+                #{$property}: #{$value};
+            }
+        }
+    }
+}

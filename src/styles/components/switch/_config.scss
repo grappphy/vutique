@@ -1,0 +1,86 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 스위치
+//# ───────────────────────────────────
+
+//! 스위치 크기 맵
+/// @type Map
+$vu-switch-sizes: (
+    sm: (
+        --vu-switch-width: #{vu-rem(26)},
+        --vu-switch-height: #{vu-rem(16)},
+        --vu-switch-caret-size: #{vu-rem(10)},
+        --vu-switch-label-font-size: #{vu-rem(14)},
+        --vu-switch-label-line-height: #{vu-rem(24)},
+        --vu-switch-control-transform-y: #{vu-rem(4)}
+    ),
+    md: (
+        --vu-switch-width: #{vu-rem(40)},
+        --vu-switch-height: #{vu-rem(24)},
+        --vu-switch-caret-size: #{vu-rem(16)},
+        --vu-switch-label-font-size: #{vu-rem(14)},
+        --vu-switch-label-line-height: #{vu-rem(24)},
+        --vu-switch-control-transform-y: #{vu-rem(2)}
+    ),
+    lg: (
+        --vu-switch-width: #{vu-rem(56)},
+        --vu-switch-height: #{vu-rem(32)},
+        --vu-switch-caret-size: #{vu-rem(24)},
+        --vu-switch-label-font-size: #{vu-rem(16)},
+        --vu-switch-label-line-height: #{vu-rem(26)},
+        --vu-switch-control-transform-y: #{vu-rem(2)}
+    )
+) !default;
+
+
+
+//! 스위치 정렬 맵
+/// @type Map
+$vu-switch-aligns: (
+    align-top: (
+        --vu-switch-control-transform: translateY(var(--vu-switch-control-translate-y)),
+        align-items: flex-start
+    )
+) !default;
+
+
+
+//! 스위치 컨트롤 상태 맵
+/// @type Map
+$vu-switch-control-states: (
+    ':checked': (
+        --vu-switch-bg-color: var(--vu-sem-color-brand-primary),
+        --vu-switch-caret-transform: translate(calc(-50% + ((var(--vu-switch-width) - var(--vu-switch-caret-size)) - (var(--vu-switch-height) - var(--vu-switch-caret-size))) / 2), -50%)
+    ),
+    ':checked + &-label': (
+        --vu-switch-label-color: var(--vu-sem-color-brand-primary)
+    )
+) !default;
+
+
+
+//! 스위치 상태 맵
+/// @type Map
+$vu-switch-states: (
+    '\\:readonly': (
+        --vu-switch-cursor: default
+    ),
+    '\\:disabled': (
+        --vu-switch-cursor: default,
+        opacity: .5
+    )
+) !default;
+
+
+
+//! 스위치 추가 기능 맵
+/// @type Map
+$vu-switch-additions: (
+    'reverse': (
+        --vu-switch-label-gap: #{vu-rem(0, 8, 0, 0)},
+        flex-direction: row-reverse
+    )
+) !default;

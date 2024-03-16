@@ -11,3 +11,5 @@ export * from './menu';
 export * from './dropdown';
 export * from './input';
 export * from './stroke';
+export * from './switch';
+export * from './symbol';

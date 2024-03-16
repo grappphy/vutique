@@ -1,0 +1,85 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 심볼
+//# ───────────────────────────────────
+
+//! 심볼 타입 맵
+/// @type Map
+$vu-symbol-types: (
+    "circle": (
+        --vu-symbol-ratio: 100%,
+        --vu-symbol-border-radius: 50%
+    ),
+    "round": (
+        --vu-symbol-ratio: 100%
+    )
+) !default;
+
+
+
+//! 심볼 사이즈 맵
+/// @type Map
+$vu-symbol-sizes: (
+    "16": (
+        --vu-symbol-size: vu-rem(16),
+        --vu-symbol-stroke-width: 1px,
+        --vu-symbol-icon-size: vu-rem(10)
+    ),
+    "20": (
+        --vu-symbol-size: vu-rem(20),
+        --vu-symbol-stroke-width: 1px,
+        --vu-symbol-icon-size: vu-rem(10)
+    ),
+    "24": (
+        --vu-symbol-size: vu-rem(24),
+        --vu-symbol-stroke-width: 1px,
+        --vu-symbol-icon-size: vu-rem(12)
+    ),
+    "32": (
+        --vu-symbol-size: vu-rem(32),
+        --vu-symbol-stroke-width: vu-rem(2),
+        --vu-symbol-icon-size: vu-rem(16)
+    ),
+    "40": (
+        --vu-symbol-size: vu-rem(40),
+        --vu-symbol-stroke-width: vu-rem(2),
+        --vu-symbol-icon-size: vu-rem(20)
+    ),
+    "56": (
+        --vu-symbol-size: vu-rem(56),
+        --vu-symbol-stroke-width: vu-rem(2),
+        --vu-symbol-icon-size: vu-rem(28)
+    ),
+    "72": (
+        --vu-symbol-size: vu-rem(72),
+        --vu-symbol-stroke-width: vu-rem(3),
+        --vu-symbol-icon-size: vu-rem(32)
+    ),
+    "144": (
+        --vu-symbol-size: vu-rem(144),
+        --vu-symbol-stroke-width: vu-rem(3),
+        --vu-symbol-icon-size: vu-rem(64)
+    )
+) !default;
+
+
+
+//! 심볼 뱃지 사이즈 맵
+/// @type Map
+$vu-symbol-badge-sizes: (
+    "20": (
+        --vu-symbol-badge-size: vu-rem(20),
+        --vu-symbol-badge-icon-size: vu-rem(12) 
+    ),
+    "26": (
+        --vu-symbol-badge-size: vu-rem(26),
+        --vu-symbol-badge-icon-size: vu-rem(15)
+    ),
+    "30": (
+        --vu-symbol-badge-size: vu-rem(30),
+        --vu-symbol-badge-icon-size: vu-rem(16)
+    )
+) !default;
