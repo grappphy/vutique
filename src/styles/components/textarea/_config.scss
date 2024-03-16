@@ -1,0 +1,73 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 인풋
+//# ───────────────────────────────────
+
+//! 인풋 유형 맵
+/// @type Map
+$vu-textarea-types: (
+    outline: (
+        --vu-textarea-bg-color: var(--stds-sem-color-neutral-variant-3),
+        --vu-textarea-box-shadow: inset 0 0 0 1px var(--stds-sem-color-border)
+    ),
+    filled: (
+        --vu-textarea-bg-color: var(--stds-sem-color-neutral-variant-2)
+    )
+) !default;
+
+
+
+//! 인풋 크기 맵
+/// @type Map
+$vu-textarea-sizes: (
+    md: (
+        --vu-textarea-font-size: #{vu-rem(14)},
+        --vu-textarea-line-height: #{vu-rem(20)}
+    ),
+    lg: (
+        --vu-textarea-font-size: #{vu-rem(16)},
+        --vu-textarea-line-height: #{vu-rem(24)}
+    )
+) !default;
+
+
+
+//! 인풋 유효성 맵
+/// @type Map
+$vu-textarea-validations: (
+    error: (
+        --vu-textarea-box-shadow: inset 0 0 0 2px var(--vu-textarea-validation-color),
+        --vu-textarea-validation-color: var(--stds-sem-color-error)
+    ),
+    warning: (
+        --vu-textarea-box-shadow: inset 0 0 0 2px var(--vu-textarea-validation-color),
+        --vu-textarea-validation-color: var(--stds-sem-color-warning)
+    ),
+    success: (
+        --vu-textarea-box-shadow: inset 0 0 0 2px var(--vu-textarea-validation-color),
+        --vu-textarea-validation-color: var(--stds-sem-color-success)
+    ),
+    information: (
+        --vu-textarea-box-shadow: inset 0 0 0 2px var(--vu-textarea-validation-color),
+        --vu-textarea-validation-color: var(--stds-sem-color-information)
+    )
+) !default;
+
+
+
+//! 인풋 상태 맵
+/// @type Map
+$vu-textarea-states: (
+    '\\:readonly': (
+        pointer-events: none
+    ),
+    '\\:disabled': (
+        --vu-textarea-bg-color: var(--stds-sem-color-disabled-variant-3),
+        --vu-textarea-text-color: var(--stds-sem-color-disabled-variant-1),
+        --vu-textarea-placeholder-text-color: var(--stds-sem-color-disabled-variant-1),
+        pointer-events: none
+    )
+) !default;

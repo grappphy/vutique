@@ -14,3 +14,4 @@ export * from './stroke';
 export * from './switch';
 export * from './symbol';
 export * from './text';
+export * from './textarea';

@@ -1,0 +1,148 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}textarea {
+    --vu-textarea-height: #{vu-rem(88)};
+    --vu-textarea-padding: #{vu-rem(12, 8, 12, 16)};
+    --vu-textarea-text-color: var(--vu-sem-color-on-surface-elevation-2);
+    --vu-textarea-placeholder-text-color: var(--vu-sem-color-placeholder);
+    --vu-textarea-validation-color: var(--vu-glob-color-gray400);
+    --vu-textarea-control-padding: #{vu-rem(0, 8, 0, 0)};
+    --vu-textarea-button-clear-size: #{vu-rem(16)};
+
+    display: flex;
+    align-items: center;
+    height: var(--vu-textarea-height);
+    padding: var(--vu-textarea-padding);
+    border-radius: vu-rem(8);
+    background-color: var(--vu-textarea-bg-color);
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+    caret-color: var(--vu-sem-color-brand-primary);
+    box-shadow: var(--vu-textarea-box-shadow);
+    box-sizing: border-box;
+
+    &:focus-within {
+        --vu-textarea-box-shadow: inset 0 0 0 2px var(--vu-textarea-validation-color);
+    }
+
+    &-start,
+    &-end {
+        display: flex;
+        align-items: center;
+        align-self: stretch;
+    }
+    
+    &-start {
+        flex-grow: 1;
+    }
+
+    &-end {
+        flex-shrink: 0;
+        margin-left: vu-rem(8);
+    }
+
+    &-control {
+        @include vu-scrollbar(
+            $size: #{vu-rem(4)},
+            $fg-color: var(--vu-sem-color-inverse-elevation-2),
+            $bg-color: transparent,
+            $thumb-radius: #{vu-rem(2)},
+            $thumb-size: #{vu-rem(4)},
+            $thumb-border: #{vu-rem(0)} solid transparent,
+            $hover-fg-color: var(--vu-sem-color-inverse-elevation-1)
+        );
+
+        overflow-y: auto;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        max-height: var(--vu-textarea-max-height);
+        padding: var(--vu-textarea-control-padding);
+        border: 0;
+        background-color: transparent;
+        font-family: inherit;
+        font-weight: inherit;
+        font-size: var(--vu-textarea-font-size);
+        line-height: var(--vu-textarea-line-height);
+        letter-spacing: inherit;
+        color: var(--vu-textarea-text-color);
+        outline: 0;
+        box-sizing: border-box;
+        resize: none;
+        -webkit-text-fill-color: var(--vu-textarea-text-color);
+    }
+
+    &:hover &-control,
+    &:focus-within &-control {
+        --vu-scrollbar-fg-color: var(--vu-sem-color-inverse-elevation-1);
+    }
+
+    &-control::-webkit-scrollbar-thumb {
+        min-height: vu-rem(24);
+    }
+
+    &-control::placeholder {
+        color: var(--vu-textarea-placeholder-text-color);
+        -webkit-text-fill-color: var(--vu-textarea-placeholder-text-color);
+    }
+
+    &-control::-webkit-input-placeholder {
+        color: var(--vu-textarea-placeholder-text-color);
+        -webkit-text-fill-color: var(--vu-textarea-placeholder-text-color);
+    }
+
+    &-control::-moz-placeholder {
+        color: var(--vu-textarea-placeholder-text-color);
+    }
+
+    &-clear-button {
+        --vu-icon-size: var(--vu-textarea-button-clear-size);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0;
+        font-size: var(--vu-textarea-button-clear-size);
+        color: var(--vu-sem-color-inverse-elevation-2);
+        background-color: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    // 유형
+    @each $type, $props in $vu-textarea-types {
+        &\:#{$type} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 크기
+    @each $size, $props in $vu-textarea-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유효성
+    @each $validation, $props in $vu-textarea-validations {
+        &\{#{$validation}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 상태
+    @each $state, $props in $vu-textarea-states {
+        &#{$state} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
