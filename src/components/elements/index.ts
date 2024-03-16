@@ -4,6 +4,8 @@ export * from './buttons';
 export * from './badge';
 export * from './a11y';
 export * from './checkbox';
+export * from './tooltip';
+export * from './ratio';
 export * from './radio';
 export * from './chip';
 export * from './dialog';

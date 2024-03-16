@@ -39,6 +39,12 @@
         <div style="position: absolute">
             <vu-el-tooltip :text="'툴팁'" :placement="'bottom-start'" :is-active="true" />
         </div>
+
+        <div style="width: 200px">
+            <vu-el-ratio :ratio="'1x1'">
+                <img src="https://dummyimage.com/600x400/000/fff" />
+            </vu-el-ratio>
+        </div>
     </vu-el-container>
 </template>
 
@@ -66,7 +72,8 @@ import {
     VuElInput,
     VuElSwitch,
     VuElSymbol,
-    VuElTooltip
+    VuElTooltip,
+    VuElRatio
 } from './components/elements';
 
 export default defineComponent({
@@ -86,7 +93,8 @@ export default defineComponent({
         VuElInput,
         VuElSwitch,
         VuElSymbol,
-        VuElTooltip
+        VuElTooltip,
+        VuElRatio
     }
 });
 </script>
