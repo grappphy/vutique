@@ -1,0 +1,44 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}icon {
+    --vu-icon-width: var(--vu-icon-size);
+    --vu-icon-height: var(--vu-icon-size);
+    --vu-icon-color: var(--vu-color, inherit);
+    --vu-icon-bg-color: var(--vu-bg-color);
+
+    vertical-align: top;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--vu-icon-size);
+    color: var(--vu-icon-color);
+    background: var(--vu-icon-bg-color);
+
+    &::before {
+        display: block;
+        width: var(--vu-icon-width);
+        height: var(--vu-icon-height);
+        text-align: center;
+        font-size: inherit;
+        speak: never;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    &\<gradient\> {
+        background: var(--vu-icon-color);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    @each $size, $value in $vu-icon-sizes {
+        &\{#{$size}\} {
+            --vu-icon-size: #{$value} !important;
+        }
+    }
+}

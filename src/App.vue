@@ -46,7 +46,7 @@
             </vu-el-ratio>
         </div>
 
-        <vu-el-hashtag :tag="'button'" :icon="'fa-hashtag'" :text="'해시태그'" />
+        <vu-el-hashtag :tag="'button'" :icon="'fa-solid fa-hashtag'" :text="'해시태그'" />
     </vu-el-container>
 </template>
 

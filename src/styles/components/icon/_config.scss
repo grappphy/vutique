@@ -1,0 +1,27 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 아이콘
+//# ───────────────────────────────────
+
+//! 아이콘 사이즈 맵
+/// @type Map
+$vu-icon-sizes: (
+    12: vu-rem(12),
+    13: vu-rem(13),
+    14: vu-rem(14),
+    15: vu-rem(15),
+    16: vu-rem(16),
+    18: vu-rem(18),
+    20: vu-rem(20),
+    24: vu-rem(24),
+    26: vu-rem(26),
+    32: vu-rem(32),
+    40: vu-rem(40),
+    42: vu-rem(42),
+    48: vu-rem(48),
+    54: vu-rem(54),
+    64: vu-rem(64)
+) !default;
