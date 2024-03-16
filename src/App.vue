@@ -45,6 +45,8 @@
                 <img src="https://dummyimage.com/600x400/000/fff" />
             </vu-el-ratio>
         </div>
+
+        <vu-el-hashtag :tag="'button'" :icon="'fa-hashtag'" :text="'해시태그'" />
     </vu-el-container>
 </template>
 
@@ -73,7 +75,8 @@ import {
     VuElSwitch,
     VuElSymbol,
     VuElTooltip,
-    VuElRatio
+    VuElRatio,
+    VuElHashtag
 } from './components/elements';
 
 export default defineComponent({
@@ -94,7 +97,8 @@ export default defineComponent({
         VuElSwitch,
         VuElSymbol,
         VuElTooltip,
-        VuElRatio
+        VuElRatio,
+        VuElHashtag
     }
 });
 </script>

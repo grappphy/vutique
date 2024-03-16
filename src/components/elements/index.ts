@@ -1,4 +1,5 @@
 export * from './container';
+export * from './icon';
 export * from './button';
 export * from './buttons';
 export * from './badge';
@@ -18,3 +19,4 @@ export * from './symbol';
 export * from './text';
 export * from './textarea';
 export * from './tooltip';
+export * from './hashtag';

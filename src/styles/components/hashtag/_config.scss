@@ -1,0 +1,15 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 해시태그
+//# ───────────────────────────────────
+
+//! 해시태그 형태 맵
+/// @type Map
+$vu-hashtag-shapes: (
+    round: (
+        --vu-hashtag-border-radius: #{vu-rem(100)}
+    )
+) !default;
