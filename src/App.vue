@@ -47,6 +47,21 @@
         </div>
 
         <vu-el-hashtag :tag="'button'" :icon="'fa-solid fa-hashtag'" :text="'해시태그'" />
+
+        <vu-el-list :type="'decimal'" :tag="'ul'">
+            <template #item="{ defaultClass }">
+                <li :class="defaultClass">
+                    <vu-el-text :tag="'span'" :size="'13'" :content="'리스트 아이템'" />
+                    <vu-el-list :type="'decimal'" :tag="'ul'">
+                        <template #item="{ defaultClass }">
+                            <li :class="defaultClass">
+                                <vu-el-text :tag="'span'" :size="'13'" :content="'리스트 아이템'" />
+                            </li>
+                        </template>
+                    </vu-el-list>
+                </li>
+            </template>
+        </vu-el-list>
     </vu-el-container>
 </template>
 
@@ -56,6 +71,7 @@ import { defineComponent } from 'vue';
 // Elements
 import {
     VuElContainer,
+    VuElText,
     VuElButtons,
     VuElButton,
     VuElBadge,
@@ -76,12 +92,14 @@ import {
     VuElSymbol,
     VuElTooltip,
     VuElRatio,
-    VuElHashtag
+    VuElHashtag,
+    VuElList
 } from './components/elements';
 
 export default defineComponent({
     components: {
         VuElContainer,
+        VuElText,
         VuElButtons,
         VuElButton,
         VuElBadge,
@@ -98,7 +116,8 @@ export default defineComponent({
         VuElSymbol,
         VuElTooltip,
         VuElRatio,
-        VuElHashtag
+        VuElHashtag,
+        VuElList
     }
 });
 </script>

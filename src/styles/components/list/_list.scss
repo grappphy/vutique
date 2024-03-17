@@ -1,0 +1,49 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}list {
+    --vu-list-item-gap-y: #{vu-rem(2)};
+    --vu-list-item-font-size: #{vu-rem(14)};
+    --vu-list-item-line-height: #{vu-rem(21)};
+
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    &-item {
+        position: relative;
+        display: var(--vu-list-item-display);
+        padding: var(--vu-list-item-padding);
+        margin-bottom: var(--vu-list-item-gap-y);
+        counter-increment: var(--vu-list-item-counter-increment);
+        font-size: var(--vu-list-item-font-size);
+        line-height: var(--vu-list-item-line-height);
+    }
+
+    &-item:last-child {
+        --vu-list-item-gap-y: 0;
+    }
+
+    &-item:before {
+        content: var(--vu-list-item-before-content);
+        position: var(--vu-list-item-before-position);
+        top: var(--vu-list-item-before-top);
+        left: var(--vu-list-item-before-left);
+        display: var(--vu-list-item-before-display);
+        width: var(--vu-list-item-before-width);
+        height: var(--vu-list-item-before-height);
+        padding: var(--vu-list-item-before-padding);
+        margin: var(--vu-list-item-before-margin);
+        background-color: var(--vu-list-item-before-bg-color);
+        border-radius: var(--vu-list-item-before-radius);
+    }
+    
+    // 유형
+    @each $type, $props in $vu-list-types {
+        &\<#{$type}\> {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}
+

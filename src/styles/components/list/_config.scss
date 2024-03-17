@@ -1,0 +1,41 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 리스트
+//# ───────────────────────────────────
+
+//! 리스트 유형 맵
+/// @type Map
+$vu-list-types: (
+    disc: (
+        --vu-list-item-display: block,
+        --vu-list-item-padding: #{vu-rem(0, 0, 0, 12)},
+        --vu-list-item-before-content: "''",
+        --vu-list-item-before-position: absolute,
+        --vu-list-item-before-top: #{vu-rem(8)},
+        --vu-list-item-before-left: 0,
+        --vu-list-item-before-width: #{vu-rem(4)},
+        --vu-list-item-before-height: #{vu-rem(4)},
+        --vu-list-item-before-bg-color: var(--vu-sem-color-neutral-variant-4),
+        --vu-list-item-before-radius: 50%
+    ),
+    hyphen: (
+        --vu-list-item-display: block,
+        --vu-list-item-padding: #{vu-rem(0, 0, 0, 9)},
+        --vu-list-item-before-content: "'-'",
+        --vu-list-item-before-display: inline-block,
+        --vu-list-item-before-width: #{vu-rem(6)},
+        --vu-list-item-before-margin: #{vu-rem(0, 3, 0, -9)}
+    ),
+    decimal: (
+        --vu-list-item-display: table,
+        --vu-list-item-counter-increment: item,
+        --vu-list-item-counter-reset: item,
+        --vu-list-item-before-content: counters(item, '.') "'. '",
+        --vu-list-item-before-display: table-cell,
+        --vu-list-item-before-padding: #{vu-rem(0, 8, 0, 0)},
+        counter-reset: item
+    )
+) !default;
