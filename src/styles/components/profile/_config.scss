@@ -1,0 +1,67 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+@use "../../functions" as *;
+
+//# 프로필
+//# ───────────────────────────────────
+
+//! 프로필 유형 맵
+/// @type Map
+$vu-profile-types: (
+    "multiline": (
+        --vu-profile-end-before-display: block,
+        --vu-profile-info-skeleton-width: #{vu-rem(56)},
+        --vu-profile-subinfo-gap-y: #{vu-rem(2)},
+        --vu-profile-subinfo-first-item-divider-display: none
+    ),
+    "vertical": (
+        --vu-profile-content-flex-direction: column,
+        --vu-profile-content-justify-content: center,
+        --vu-profile-start-gap-y: #{vu-rem(16)},
+        --vu-profile-start-gap-x: 0,
+    )
+) !default;
+
+
+
+//! 프로필 크기 맵
+/// @type Map
+$vu-profile-sizes: (
+    "sm": (
+        --vu-profile-start-gap-x: #{vu-rem(8)},
+        --vu-profile-info-font-size: #{vu-rem(14)},
+        --vu-profile-info-line-height: #{vu-rem(20)},
+        --vu-profile-nickname-font-weight: var(--vu-font-regular),
+        --vu-profile-nickname-color: var(--stds-sem-color-on-surface-elevation-3),
+        --vu-profile-subinfo-font-size: #{vu-rem(12)},
+        --vu-profile-subinfo-line-height: #{vu-rem(18)}
+    ),
+    "md": (
+        --vu-profile-start-gap-x: #{vu-rem(12)},
+        --vu-profile-info-font-size: #{vu-rem(14)},
+        --vu-profile-info-line-height: #{vu-rem(20)},
+        --vu-profile-nickname-font-weight: var(--vu-font-medium),
+        --vu-profile-nickname-color: var(--stds-sem-color-on-surface-elevation-2),
+        --vu-profile-subinfo-font-size: #{vu-rem(12)},
+        --vu-profile-subinfo-line-height: #{vu-rem(18)}
+    ),
+    "lg": (
+        --vu-profile-start-gap-x: #{vu-rem(16)},
+        --vu-profile-info-font-size: #{vu-rem(16)},
+        --vu-profile-info-line-height: #{vu-rem(26)},
+        --vu-profile-nickname-font-weight: var(--vu-font-medium),
+        --vu-profile-nickname-color: var(--stds-sem-color-on-surface-elevation-2),
+        --vu-profile-subinfo-font-size: #{vu-rem(12)},
+        --vu-profile-subinfo-line-height: #{vu-rem(18)}
+    ),
+    "xl": (
+        --vu-profile-start-gap-x: #{vu-rem(16)},
+        --vu-profile-info-font-size: #{vu-rem(18)},
+        --vu-profile-info-line-height: #{vu-rem(26)},
+        --vu-profile-nickname-font-weight: var(--vu-font-bold),
+        --vu-profile-nickname-color: var(--stds-sem-color-on-surface-elevation-2),
+        --vu-profile-subinfo-font-size: #{vu-rem(14)},
+        --vu-profile-subinfo-line-height: #{vu-rem(24)}
+    )
+) !default;

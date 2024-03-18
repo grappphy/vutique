@@ -21,3 +21,4 @@ export * from './textarea';
 export * from './tooltip';
 export * from './hashtag';
 export * from './list';
+export * from './profile';

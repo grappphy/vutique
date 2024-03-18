@@ -1,0 +1,275 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}profile {
+    --vu-profile-content-align: center;
+    --vu-profile-end-before-display: flex;
+    --vu-profile-info-skeleton-width: #{vu-rem(146)};
+    --vu-profile-subinfo-color: var(--vu-sem-color-on-surface-elevation-4);
+
+    position: relative;
+    display: inline-flex;
+    vertical-align: top;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    font-family: var(--vu-font-family-base);
+    letter-spacing: var(--vu-letter-spacing);
+
+    &-content {
+        position: relative;
+        display: flex;
+        flex-direction: var(--vu-profile-content-flex-direction);
+        justify-content: var(--vu-profile-content-justify-content);
+        flex-grow: 1;
+        align-items: var(--vu-profile-content-align);
+        max-width: 100%;
+    }
+
+    &-start {
+        position: relative;
+        display: flex;
+        margin-right: var(--vu-profile-start-gap-x);
+        margin-bottom: var(--vu-profile-start-gap-y);
+    }
+
+    &-end {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+    }
+
+    &-end-after {
+        margin-left: vu-rem(24);
+    }
+
+    &-end-before {
+        display: var(--vu-profile-end-before-display);
+        align-items: center;
+        flex-grow: 1;
+        min-width: 0;
+    }
+
+    &-link,
+    &-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        outline: none;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    &-symbol {
+        display: block;
+        z-index: 0;
+    }
+
+    &-info {
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: var(--vu-profile-info-font-size);
+        line-height: var(--vu-profile-info-line-height);
+    }
+
+    &-badge {
+        margin-right: vu-rem(4);
+    }
+
+    &-grade-badge {
+        align-self: center;
+        margin-right: vu-rem(4);
+    }
+
+    &-staff {
+        --vu-text-color: var(--vu-sem-color-information);
+
+        display: inline-block;
+        flex-shrink: 0;
+        margin-right: vu-rem(4);
+        text-transform: uppercase;
+        font-weight: var(--vu-font-medium);
+        word-break: break-word;
+    }
+
+    &-nickname {
+        --vu-text-color: var(--vu-color, var(--vu-profile-nickname-color));
+
+        @include vu-truncate($word-break: break-word);
+        font-weight: var(--vu-profile-nickname-font-weight);
+    }
+
+    &-nickname-prefix,
+    &-nickname-suffix {
+        --vu-text-color: var(--vu-color, var(--vu-profile-nickname-color));
+        flex-shrink: 0;
+    }
+
+    &-nickname-prefix {
+        margin-right: vu-rem(4);
+    }
+
+    &-nickname-suffix {
+        margin-left: vu-rem(4);
+    }
+
+    &-writer {
+        --vu-text-font-size: #{vu-rem(11)};
+        --vu-text-line-height: #{vu-rem(18)};
+
+        position: relative;
+        display: inline-flex;
+        vertical-align: top;
+        flex-shrink: 0;
+        padding: vu-rem(0, 4);
+        margin-left: vu-rem(8);
+        color: var(--vu-sem-color-brand-primary);
+        z-index: 2;
+    }
+
+    &-writer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0.1;
+        width: 100%;
+        height: 100%;
+        border-radius: vu-rem(4);
+        background-color: currentColor;
+    }
+
+    &-writer::after {
+        content: '';
+        position: absolute;
+        top: vu-rem(-2);
+        left: 0;
+        width: 100%;
+        height: vu-rem(24);
+    }
+
+    &-info {
+        --vu-skeleton-width: var(--vu-profile-info-skeleton-width);
+    }
+
+    &-subinfo,
+    &-subinfo-item {
+        display: flex;
+        align-items: center;
+    }
+
+    &-subinfo {
+        --vu-color: var(--vu-profile-subinfo-color);
+        --vu-skeleton-width: #{vu-rem(120)};
+
+        flex-shrink: 0;
+        margin-top: var(--vu-profile-subinfo-gap-y);
+        font-size: var(--vu-profile-subinfo-font-size);
+        line-height: var(--vu-profile-subinfo-line-height);
+    }
+
+    &-subinfo-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        z-index: 3;
+    }
+
+    &-subinfo-item::before {
+        content: '';
+        display: block;
+        width: vu-rem(2);
+        height: vu-rem(2);
+        margin-right: vu-rem(8);
+        margin-left: vu-rem(8);
+        border-radius: 50%;
+        background-color: var(--vu-sem-color-inverse-elevation-2);
+    }
+
+    &-subinfo-item:first-child::before {
+        display: var(--vu-profile-subinfo-first-item-divider-display);
+    }
+
+    &-subinfo-link,
+    &-subinfo-button {
+        display: flex;
+        align-items: center;
+    }
+
+    &-subinfo-link {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    &-subinfo-text {
+        display: block;
+        white-space: nowrap;
+    }
+
+    &-subinfo-text + &-subinfo-text {
+        margin-left: vu-rem(2);
+    }
+
+    &-subinfo-icon {
+        margin-right: vu-rem(2);
+    }
+
+    &-subinfo-after-icon {
+        margin-left: vu-rem(4);
+    }
+
+    &-rank,
+    &-rank-dark {
+        --vu-badge-text-color: var(--vu-glob-color-white);
+
+        align-self: center;
+        flex-shrink: 0;
+        margin-right: vu-rem(4);
+        font-weight: var(--vu-font-regular);
+    }
+
+    &-rank {
+        --vu-badge-signature-color: #919cb4;
+        --vu-badge-bg-color: var(--vu-badge-signature-color);
+    }
+
+    &-rank-dark {
+        background: linear-gradient(270deg, #455169 0%, #575c80 100%);
+    }
+
+    &-subtext,
+    &-sublink {
+        @include vu-truncate();
+    }
+
+    &-date {
+        --vu-date-font-size: inherit;
+        --vu-date-line-height: inherit;
+    }
+
+    // 크기
+    @each $size, $props in $vu-profile-sizes {
+        &\{#{$size}\} {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+
+    // 유형
+    @each $type, $props in $vu-profile-types {
+        &\<#{$type}\> {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
+}

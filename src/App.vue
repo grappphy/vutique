@@ -62,6 +62,20 @@
                 </li>
             </template>
         </vu-el-list>
+
+        <vu-el-profile :size="'md'" :use-symbol="true">
+            <template #symbol>
+                <vu-el-symbol :type="'circle'" :size="'40'">
+                    <template #thumbnail="{ defaultClass }">
+                        <img :class="defaultClass" src="https://dummyimage.com/600x400/000/fff" />
+                    </template>
+                </vu-el-symbol>
+            </template>
+
+            <template #nickname="{ defaultClass }">
+                <vu-el-text :class="defaultClass" :tag="'span'" :content="'닉네임'" />
+            </template>
+        </vu-el-profile>
     </vu-el-container>
 </template>
 
@@ -93,7 +107,8 @@ import {
     VuElTooltip,
     VuElRatio,
     VuElHashtag,
-    VuElList
+    VuElList,
+    VuElProfile
 } from './components/elements';
 
 export default defineComponent({
@@ -117,7 +132,8 @@ export default defineComponent({
         VuElTooltip,
         VuElRatio,
         VuElHashtag,
-        VuElList
+        VuElList,
+        VuElProfile
     }
 });
 </script>
