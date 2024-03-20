@@ -1,0 +1,28 @@
+@use "./unit" as *;
+
+//# 폰트 설정
+//# ───────────────────────────────────
+
+//! 폰트 패밀리 산 세리프
+/// @type List
+$vu-sans-serif: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Dotum", "돋움", sans-serif !default;
+
+//! 폰트 패밀리 모노스페이스
+/// @type List
+$vu-modospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", "Noto Sans KR", "Malgun Gothic", "맑은 고딕", "Dotum", "돋움" !default;
+
+//! 기본 폰트 패밀리
+/// @type List
+$vu-default-font-family: $vu-sans-serif !default;
+
+//! 코드 폰트 패밀리
+/// @type List
+$vu-code-font-family: $vu-modospace !default;
+
+//! html 폰트 사이즈
+/// @type Number
+$vu-html-font-size: $vu-browser-context + px;
+
+//! 바디 폰트 크기
+/// @type Number
+$vu-body-font-size: if($vu-browser-unit == rem, 1.6rem, 16px) !default;

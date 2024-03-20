@@ -8,7 +8,3 @@ $vu-browser-unit: rem;
 //! 기준 단위 초기값 (px 단위 기준)
 /// @type Number
 $vu-browser-context: 10;
-
-//! :root 폰트 사이즈
-/// @type Number
-$vu-root-font-size: $vu-browser-context + px;
