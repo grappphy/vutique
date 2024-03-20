@@ -1,13 +1,13 @@
 <template>
-    <div class="sc-profile-subinfo-item">
+    <div class="vu-profile-subinfo-item">
         <slot>
             <!-- 슬롯: 링크 -->
             <slot
                 name="link"
-                :default-class="'sc-profile-subinfo-link'"
-                :icon-class="'sc-profile-subinfo-icon'"
-                :text-class="'sc-profile-subinfo-text'"
-                :after-icon-class="'sc-profile-subinfo-after-icon'"
+                :default-class="'vu-profile-subinfo-link'"
+                :icon-class="'vu-profile-subinfo-icon'"
+                :text-class="'vu-profile-subinfo-text'"
+                :after-icon-class="'vu-profile-subinfo-after-icon'"
             >
             </slot>
         </slot>
@@ -18,6 +18,6 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'sc-el-profile-subinfo-item'
+    name: 'vu-el-profile-subinfo-item'
 });
 </script>

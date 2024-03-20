@@ -1,6 +1,6 @@
 <template>
-    <component @click="clickHandler" class="sc-profile-button" :is="tag" :to="to" :href="href" :target="linkTarget">
-        <sc-el-a11y :text="'프로필 더보기'" />
+    <component @click="clickHandler" class="vu-profile-button" :is="tag" :to="to" :href="href" :target="linkTarget">
+        <vu-el-a11y :text="'프로필 더보기'" />
     </component>
 </template>
 
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue';
 
 // Elements
-import ScElA11y from '../a11y/sc-el-a11y.vue';
+import ScElA11y from '../a11y/vu-el-a11y.vue';
 
 export default defineComponent({
     components: {
@@ -51,7 +51,7 @@ export default defineComponent({
     setup(props, { emit }) {
         // 클릭
         function clickHandler(event: Event): void {
-            emit('sc-on-click', event);
+            emit('on-click', event);
         }
 
         return {
