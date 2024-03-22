@@ -1,0 +1,19 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}toggle {
+    --sc-toggle-button-text-color: inherit;
+    --sc-toggle-icon-color: inherit;
+
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &-button {
+        --sc-button-text-color: var(--sc-toggle-button-text-color);
+    }
+
+    &-icon {
+        --sc-button-icon-color: var(--sc-toggle-icon-color);
+    }
+}

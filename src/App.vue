@@ -88,6 +88,10 @@
                 </div>
             </template>
         </vu-el-pagination>
+
+        <vu-el-toggle>
+            <template #button-content> 토글 </template>
+        </vu-el-toggle>
     </vu-el-container>
 </template>
 
@@ -122,7 +126,8 @@ import {
     VuElList,
     VuElProfile,
     VuElPagination,
-    VuElPaginationButton
+    VuElPaginationButton,
+    VuElToggle
 } from './components/elements';
 
 export default defineComponent({
@@ -149,7 +154,8 @@ export default defineComponent({
         VuElList,
         VuElProfile,
         VuElPagination,
-        VuElPaginationButton
+        VuElPaginationButton,
+        VuElToggle
     }
 });
 </script>
