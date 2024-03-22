@@ -1,0 +1,17 @@
+@use "config" as *;
+
+.#{$vu-variable-prefix}date {
+    --vu-date-font-size: #{vu-rem(12)};
+    --vu-date-line-height: #{vu-rem(18)};
+
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &-text {
+        display: block;
+        font-size: var(--vu-date-font-size);
+        line-height: var(--vu-date-line-height);
+        white-space: nowrap;
+    }
+}
