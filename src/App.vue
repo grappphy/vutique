@@ -76,6 +76,18 @@
                 <vu-el-text :class="defaultClass" :tag="'span'" :content="'닉네임'" />
             </template>
         </vu-el-profile>
+
+        <vu-el-pagination>
+            <template #content="{ listClass, itemClass }">
+                <div :class="listClass">
+                    <div :class="itemClass">
+                        <vu-el-pagination-button :is-active="true">
+                            <template #content> 1 </template>
+                        </vu-el-pagination-button>
+                    </div>
+                </div>
+            </template>
+        </vu-el-pagination>
     </vu-el-container>
 </template>
 
@@ -108,7 +120,9 @@ import {
     VuElRatio,
     VuElHashtag,
     VuElList,
-    VuElProfile
+    VuElProfile,
+    VuElPagination,
+    VuElPaginationButton
 } from './components/elements';
 
 export default defineComponent({
@@ -133,7 +147,9 @@ export default defineComponent({
         VuElRatio,
         VuElHashtag,
         VuElList,
-        VuElProfile
+        VuElProfile,
+        VuElPagination,
+        VuElPaginationButton
     }
 });
 </script>

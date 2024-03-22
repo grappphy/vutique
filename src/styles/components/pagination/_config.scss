@@ -1,0 +1,25 @@
+@forward "../../configs";
+@forward "../../functions";
+@forward "../../mixins";
+
+//! 페이지네이션 버튼 상태 맵
+/// @type Map
+$vu-pagination-button-states: (
+    ':active': (
+        --vu-pagination-button-bg-color: var(--vu-sem-color-interaction-pressed)
+    ),
+    ':focus-visible': (
+        --vu-pagination-button-bg-color: var(--vu-sem-color-interaction-focused)
+    ),
+    '\\:active': (
+        --vu-pagination-button-bg-color: var(--vu-sem-color-brand-primary),
+        --vu-pagination-button-text-color: var(--vu-sem-color-inverse-indie-os-bw, var(--vu-glob-color-white)),
+        font-weight: var(--vu-font-bold),
+        pointer-events: none
+    ),
+    '\\:disabled': (
+        --vu-pagination-button-text-color: var(--vu-sem-color-disabled-variant-1),
+        cursor: default,
+        pointer-events: none
+    )
+) !default;
