@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
-        <div>
-            <vu-fn-chip :text="'칩'" :use-delete="true" />
+        <div style="position: relative">
+            <vu-fn-tooltip :text="'툴팁'" :is-active="true" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnChip } from './components/functions';
+import { VuFnTooltip } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnChip
+        VuFnTooltip
     }
 });
 </script>

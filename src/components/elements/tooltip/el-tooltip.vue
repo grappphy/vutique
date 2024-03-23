@@ -47,8 +47,8 @@ export default defineComponent({
         }
     },
     setup(props) {
+        // 클래스
         const classes = computed(() => {
-            // 클래스
             const defaultClass = 'vu-tooltip';
 
             const activeClass = props.isActive ? 'vu-tooltip:active' : null;

@@ -5,3 +5,4 @@ export * from './chip';
 export * from './radio';
 export * from './switch';
 export * from './text';
+export * from './tooltip';
