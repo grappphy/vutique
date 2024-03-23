@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-button :text="'버튼'" />
+            <vu-fn-badge :color="'primary'" :text="'뱃지'" :text-color="'white'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnButton } from './components/functions';
+import { VuFnBadge } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnButton
+        VuFnBadge
     }
 });
 </script>
