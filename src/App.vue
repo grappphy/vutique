@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-text :size="'14'" :content="`<span>텍스트</span>`" />
+            <vu-fn-button :text="'버튼'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnText } from './components/functions';
+import { VuFnButton } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnText
+        VuFnButton
     }
 });
 </script>
