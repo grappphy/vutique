@@ -33,7 +33,8 @@
 import { defineComponent, computed } from 'vue';
 
 // Elements
-import { VuElText, VuElIcon } from '../index';
+import { VuElText } from '../text';
+import { VuElIcon } from '../icon';
 
 export default defineComponent({
     name: 'vu-el-hashtag',

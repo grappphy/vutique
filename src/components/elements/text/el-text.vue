@@ -1,5 +1,5 @@
 <template>
-    <component :class="classes" :is="tag">
+    <component @click="clickHandler" :class="classes" :is="tag" :to="to" :href="href" :target="linkTarget">
         <slot>
             {{ content }}
         </slot>
@@ -21,7 +21,7 @@ export default defineComponent({
             type: String
         },
         /**
-         * 태그
+         * 텍스트 태그
          *
          * @type {String}
          */
@@ -29,7 +29,7 @@ export default defineComponent({
             type: String
         },
         /**
-         * 크기
+         * 텍스트 크기
          *
          * @type {String}
          */
@@ -37,7 +37,7 @@ export default defineComponent({
             type: String
         },
         /**
-         * 색상
+         * 텍스트 색상
          *
          * @type {String}
          */
@@ -45,15 +45,48 @@ export default defineComponent({
             type: String
         },
         /**
-         * 내용
+         * 텍스트 내용
          *
          * @type {string}
          */
         content: {
             type: String
+        },
+        /**
+         * 링크 URL
+         *
+         * @type {String}
+         */
+        href: {
+            type: String
+        },
+        /**
+         * 라우터 링크 URL
+         *
+         * @type {String}
+         */
+        to: {
+            type: String
+        },
+        /**
+         * 링크 타겟
+         *
+         * @type {String}
+         */
+        linkTarget: {
+            type: String
+        },
+        /**
+         * 말줄임 사용 여부
+         *
+         * @type {Boolean}
+         */
+        useTruncate: {
+            type: Boolean
         }
     },
-    setup(props) {
+    setup(props, { emit }) {
+        // 클래스
         const classes = computed(() => {
             const defaultClass = 'vu-text';
 
@@ -66,8 +99,16 @@ export default defineComponent({
             return [defaultClass, tyepClass, sizeClass, colorClass];
         });
 
+        // 클릭
+        function clickHandler(): void {
+            emit('on-click');
+        }
+
         return {
-            classes
+            classes,
+
+            // Handlers
+            clickHandler
         };
     }
 });
