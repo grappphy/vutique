@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-badge :color="'primary'" :text="'뱃지'" :text-color="'white'" />
+            <vu-fn-checkbox :label="'체크박스'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnBadge } from './components/functions';
+import { VuFnCheckbox } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnBadge
+        VuFnCheckbox
     }
 });
 </script>
