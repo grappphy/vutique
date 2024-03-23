@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-switch :label="'스위치'" />
+            <vu-fn-chip :text="'칩'" :use-delete="true" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnSwitch } from './components/functions';
+import { VuFnChip } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnSwitch
+        VuFnChip
     }
 });
 </script>

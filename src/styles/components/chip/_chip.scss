@@ -66,9 +66,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 0;
         margin-left: var(--vu-chip-delete-gap-x);
+        border: none;
+        background-color: transparent;
         color: var(--vu-chip-delete-color);
         outline: none;
+        cursor: pointer;
     }
 
     &-delete:focus-visible {

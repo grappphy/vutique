@@ -1,6 +1,7 @@
 export * from './badge';
 export * from './button';
 export * from './checkbox';
+export * from './chip';
 export * from './colors';
 export * from './link';
 export * from './radio';

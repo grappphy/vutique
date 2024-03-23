@@ -175,6 +175,7 @@ export default defineComponent({
         }
 
         return {
+            // Handlers
             controlClickHandler,
             controlChangeHandler
         };
