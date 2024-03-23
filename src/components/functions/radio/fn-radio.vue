@@ -1,5 +1,5 @@
 <template>
-    <vu-el-checkbox
+    <vu-el-radio
         @on-click="controlClickHandler"
         @on-change="controlChangeHandler"
         :size="size"
@@ -23,22 +23,22 @@
             <!-- 레이블 콘텐츠 슬롯 -->
             <slot name="label-content" />
         </template>
-    </vu-el-checkbox>
+    </vu-el-radio>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
 
 // Elements
-import { VuElCheckbox } from '../../elements';
+import { VuElRadio } from '../../elements';
 
 // Types
-import type { CheckboxSizes, CheckboxAligns, CheckboxControlTypes } from '../../../types';
-import { CHECKBOX_SIZES, CHECKBOX_ALIGNS, CHECKBOX_CONTROL_TYPES } from '../../../types';
+import type { RadioSizes, RadioAligns, RadioControlTypes } from '../../../types';
+import { RADIO_SIZES, RADIO_ALIGNS, RADIO_CONTROL_TYPES } from '../../../types';
 
 export default defineComponent({
     components: {
-        VuElCheckbox
+        VuElRadio
     },
     props: {
         /**
@@ -48,10 +48,10 @@ export default defineComponent({
          * @default 'md'
          */
         size: {
-            type: String as PropType<CheckboxSizes>,
-            default: CHECKBOX_SIZES.md,
-            validator: (value: string): value is CheckboxSizes => {
-                return Object.values(CHECKBOX_SIZES).includes(value as CheckboxSizes);
+            type: String as PropType<RadioSizes>,
+            default: RADIO_SIZES.md,
+            validator: (value: string): value is RadioSizes => {
+                return Object.values(RADIO_SIZES).includes(value as RadioSizes);
             }
         },
         /**
@@ -61,23 +61,23 @@ export default defineComponent({
          * @default 'middle'
          */
         align: {
-            type: String as PropType<CheckboxAligns>,
-            default: CHECKBOX_ALIGNS.middle,
-            validator: (value: string): value is CheckboxAligns => {
-                return Object.values(CHECKBOX_ALIGNS).includes(value as CheckboxAligns);
+            type: String as PropType<RadioAligns>,
+            default: RADIO_ALIGNS.middle,
+            validator: (value: string): value is RadioAligns => {
+                return Object.values(RADIO_ALIGNS).includes(value as RadioAligns);
             }
         },
         /**
          * 컨트롤 유형
          *
          * @type {String}
-         * @default 'checkbox'
+         * @default 'radio'
          */
         controlType: {
-            type: String as PropType<CheckboxControlTypes>,
-            default: CHECKBOX_CONTROL_TYPES.checkbox,
-            validator: (value: string): value is CheckboxControlTypes => {
-                return Object.values(CHECKBOX_CONTROL_TYPES).includes(value as CheckboxControlTypes);
+            type: String as PropType<RadioControlTypes>,
+            default: RADIO_CONTROL_TYPES.radio,
+            validator: (value: string): value is RadioControlTypes => {
+                return Object.values(RADIO_CONTROL_TYPES).includes(value as RadioControlTypes);
             }
         },
         /**

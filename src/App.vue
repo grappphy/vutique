@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-checkbox :label="'체크박스'" />
+            <vu-fn-radio :label="'라디오'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnCheckbox } from './components/functions';
+import { VuFnRadio } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnCheckbox
+        VuFnRadio
     }
 });
 </script>
