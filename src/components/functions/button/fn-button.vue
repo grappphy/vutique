@@ -17,20 +17,20 @@
         :link-target="linkTarget"
         :is-disabled="isDisabled"
     >
-        <!-- 슬롯: 아이콘 -->
         <template #icon="{ defaultClass }">
+            <!-- 슬롯: 아이콘 -->
             <slot name="icon" :default-class="defaultClass" />
         </template>
 
-        <!-- 슬롯: 텍스트 -->
         <template #text="{ defaultClass }">
+            <!-- 슬롯: 텍스트 -->
             <slot name="text" :default-class="defaultClass">
                 <vu-fn-text v-if="text" :content="text" :class="defaultClass" />
             </slot>
         </template>
 
-        <!-- 슬롯: 화살표 -->
         <template #arrow="{ defaultClass }">
+            <!-- 슬롯: 화살표 -->
             <slot name="arrow" :default-class="defaultClass" />
         </template>
     </vu-el-button>
