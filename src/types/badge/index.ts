@@ -1,3 +1,4 @@
+// 유형
 export const BADGE_TYPES = {
     filled: 'filled',
     outline: 'outline'
@@ -5,6 +6,7 @@ export const BADGE_TYPES = {
 
 export type BadgeTypes = (typeof BADGE_TYPES)[keyof typeof BADGE_TYPES];
 
+// 크기
 export const BADGE_SIZES = {
     xs: 'xs',
     sm: 'sm',
@@ -14,6 +16,7 @@ export const BADGE_SIZES = {
 
 export type BadgeSizes = (typeof BADGE_SIZES)[keyof typeof BADGE_SIZES];
 
+// 모양
 export const BADGE_SHAPES = {
     round: 'round',
     dot: 'dot'

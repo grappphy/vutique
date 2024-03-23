@@ -1,3 +1,4 @@
+// 타겟
 export const LINK_TARGETS = {
     blank: '_blank',
     parent: '_parent',

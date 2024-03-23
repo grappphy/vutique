@@ -5,4 +5,5 @@ export * from './colors';
 export * from './link';
 export * from './radio';
 export * from './sanitize';
+export * from './switch';
 export * from './text';

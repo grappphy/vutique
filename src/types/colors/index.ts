@@ -1,3 +1,4 @@
+// 색상
 export const COLORS = {
     transparent: 'transparent',
     white: 'white',

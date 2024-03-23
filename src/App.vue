@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div>
-            <vu-fn-radio :label="'라디오'" />
+            <vu-fn-switch :label="'스위치'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnRadio } from './components/functions';
+import { VuFnSwitch } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnRadio
+        VuFnSwitch
     }
 });
 </script>
