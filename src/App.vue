@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div style="position: relative">
-            <vu-fn-tooltip :text="'툴팁'" :is-active="true" />
+            <vu-fn-date :text="'2024.03.24'" :tooltip-text="'2024.03.24'" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnTooltip } from './components/functions';
+import { VuFnDate } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnTooltip
+        VuFnDate
     }
 });
 </script>

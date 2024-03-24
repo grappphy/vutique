@@ -5,7 +5,8 @@
     --vu-date-line-height: #{vu-rem(18)};
 
     position: relative;
-    display: flex;
+    vertical-align: top;
+    display: inline-flex;
     align-items: center;
 
     &-text {

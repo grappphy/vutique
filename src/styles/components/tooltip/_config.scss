@@ -1,3 +1,95 @@
 @forward "../../configs";
 @forward "../../functions";
 @forward "../../mixins";
+@use "../../functions" as *;
+
+//! 툴팁 배치 맵
+/// @type Map
+$vu-tooltip-placements: (
+  top: (
+    --vu-tooltip-caret-left: 50%,
+    --vu-tooltip-caret-border-top: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-bottom: calc(var(--vu-tooltip-caret-height) * -1)
+  ),
+  top-start: (
+    --vu-tooltip-caret-left: #{vu-rem(8)},
+    --vu-tooltip-caret-border-top: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-bottom: calc(var(--vu-tooltip-caret-height) * -1)
+  ),
+  top-end: (
+    --vu-tooltip-caret-right: #{vu-rem(8)},
+    --vu-tooltip-caret-border-top: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-bottom: calc(var(--vu-tooltip-caret-height) * -1)
+  ),
+  bottom: (
+    --vu-tooltip-caret-left: 50%,
+    --vu-tooltip-caret-top: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-bottom: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  bottom-start: (
+    --vu-tooltip-caret-left: #{vu-rem(8)},
+    --vu-tooltip-caret-top: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-bottom: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  bottom-end: (
+    --vu-tooltip-caret-right: #{vu-rem(8)},
+    --vu-tooltip-caret-top: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-bottom: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-right: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  left: (
+    --vu-tooltip-caret-top: 50%,
+    --vu-tooltip-caret-right: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    transform: translateY(-50%),
+  ),
+  left-start: (
+    --vu-tooltip-caret-top: #{vu-rem(8)},
+    --vu-tooltip-caret-right: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  left-end: (
+    --vu-tooltip-caret-bottom: #{vu-rem(8)},
+    --vu-tooltip-caret-right: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-left: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  right: (
+    --vu-tooltip-caret-top: 50%,
+    --vu-tooltip-caret-left: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-right: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    transform: translateY(-50%),
+  ),
+  right-start: (
+    --vu-tooltip-caret-top: #{vu-rem(8)},
+    --vu-tooltip-caret-left: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-right: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  ),
+  right-end: (
+    --vu-tooltip-caret-bottom: #{vu-rem(8)},
+    --vu-tooltip-caret-left: calc(var(--vu-tooltip-caret-height) * -1),
+    --vu-tooltip-caret-border-top: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+    --vu-tooltip-caret-border-right: var(--vu-tooltip-caret-height) solid var(--vu-tooltip-caret-color),
+    --vu-tooltip-caret-border-bottom: calc(var(--vu-tooltip-caret-width) * 0.5) solid transparent,
+  )
+) !default;

@@ -5,6 +5,7 @@ export * from './buttons';
 export * from './checkbox';
 export * from './chip';
 export * from './container';
+export * from './date';
 export * from './dialog';
 export * from './dropdown';
 export * from './hashtag';

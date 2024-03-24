@@ -68,4 +68,13 @@
         visibility: visible;
         opacity: 1;
     }
+
+    // 배치
+    @each $placement, $props in $vu-tooltip-placements {
+        &[data-vu-placement=#{$placement}] {
+            @each $prop, $value in $props {
+                #{$prop}: #{$value};
+            }
+        }
+    }
 }

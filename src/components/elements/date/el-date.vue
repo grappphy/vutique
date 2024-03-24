@@ -1,5 +1,5 @@
 <template>
-    <div class="vu-date">
+    <div @mouseenter="mouseenterHandler" @mouseleave="mouseleaveHandler" class="vu-date">
         <!-- 슬롯: 텍스트 -->
         <slot name="text" :default-class="'vu-date-text'" />
 
@@ -12,7 +12,24 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-    name: 'vu-el-date'
+    name: 'vu-el-date',
+    setup(props, { emit }) {
+        // 마우스엔터
+        function mouseenterHandler(): void {
+            emit('on-mouseenter');
+        }
+
+        // 마우스리브
+        function mouseleaveHandler(): void {
+            emit('on-mouseleave');
+        }
+
+        return {
+            // handlers
+            mouseenterHandler,
+            mouseleaveHandler
+        };
+    }
 });
 </script>
 

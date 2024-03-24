@@ -21,6 +21,7 @@ import type { Placements } from '../../../types';
 import { PLACEMENTS } from '../../../types';
 
 export default defineComponent({
+    name: 'vu-fn-tooltip',
     components: {
         VuElTooltip,
         VuFnText
