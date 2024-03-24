@@ -1,3 +1,3 @@
 export const CHIP = {
-    DELETE_ICON: 'fa-solid fa-circle-xmark'
+    DELETE_ICON: 'ic-v2-control-close-circle-fill'
 };

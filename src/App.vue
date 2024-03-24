@@ -1,7 +1,7 @@
 <template>
     <vu-el-container>
         <div style="position: relative">
-            <vu-fn-date :text="'2024.03.24'" :tooltip-text="'2024.03.24'" />
+            <vu-fn-dialog :use-header-start="false" />
         </div>
     </vu-el-container>
 </template>
@@ -13,12 +13,12 @@ import { defineComponent } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnDate } from './components/functions';
+import { VuFnDialog } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnDate
+        VuFnDialog
     }
 });
 </script>

@@ -3,6 +3,7 @@ export * from './button';
 export * from './checkbox';
 export * from './chip';
 export * from './date';
+export * from './dialog';
 export * from './radio';
 export * from './switch';
 export * from './text';
