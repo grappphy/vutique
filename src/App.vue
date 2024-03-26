@@ -3,7 +3,7 @@
         <div style="position: relative">
             <vu-fn-filled-dropdown :data="dropdownData" :selected-index="0" />
 
-            <vu-fn-filled-dropdown :data="dropdownData" />
+            <vu-fn-icon-dropdown :data="dropdownData" />
         </div>
     </vu-el-container>
 </template>
@@ -15,12 +15,13 @@ import { defineComponent, ref } from 'vue';
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnFilledDropdown } from './components/functions';
+import { VuFnFilledDropdown, VuFnIconDropdown } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnFilledDropdown
+        VuFnFilledDropdown,
+        VuFnIconDropdown
     },
     setup() {
         const dropdownData = ref([
