@@ -4,6 +4,7 @@ export * from './checkbox';
 export * from './chip';
 export * from './colors';
 export * from './dialog';
+export * from './dropdown';
 export * from './link';
 export * from './placements';
 export * from './radio';

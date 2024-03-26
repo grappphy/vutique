@@ -1,24 +1,36 @@
 <template>
     <vu-el-container>
         <div style="position: relative">
-            <vu-fn-dialog :use-header-start="false" />
+            <vu-fn-filled-dropdown :data="dropdownData" :selected-index="0" />
+
+            <vu-fn-filled-dropdown :data="dropdownData" />
         </div>
     </vu-el-container>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 
 // Elements
 import { VuElContainer } from './components/elements';
 
 // Functions
-import { VuFnDialog } from './components/functions';
+import { VuFnFilledDropdown } from './components/functions';
 
 export default defineComponent({
     components: {
         VuElContainer,
-        VuFnDialog
+        VuFnFilledDropdown
+    },
+    setup() {
+        const dropdownData = ref([
+            {
+                text: '드롭다운'
+            }
+        ]);
+        return {
+            dropdownData
+        };
     }
 });
 </script>
