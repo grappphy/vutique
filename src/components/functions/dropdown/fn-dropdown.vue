@@ -1,5 +1,5 @@
 <template>
-    <vu-el-dropdown ref="rootRef" :type="'filled'" :size="size" :is-active="isActive" :is-disabled="isDisabled">
+    <vu-el-dropdown ref="rootRef" :type="type" :size="size" :is-active="isActive" :is-disabled="isDisabled">
         <!-- 버튼 -->
         <template #button>
             <slot name="button" :on-button-click="buttonClickHandler">
@@ -36,14 +36,14 @@ import { defineComponent } from 'vue';
 import { VuElDropdown, VuElDropdownButton } from '../../elements';
 
 // Functions
-import { VuFnDropdownMenu } from '../dropdown';
+import VuFnDropdownMenu from './fn-dropdown-menu.vue';
 import { VuFnText } from '../text';
 
 // Composables
 import { useDropdown, dropdownProps } from '../../../composables';
 
 export default defineComponent({
-    name: 'vu-fn-filled-dropdown',
+    name: 'vu-fn-dropdown',
     components: {
         VuElDropdown,
         VuElDropdownButton,
@@ -54,7 +54,8 @@ export default defineComponent({
     props: dropdownProps,
     setup(props) {
         // Composables
-        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler } = useDropdown(props);
+        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler, menuButtonClickHandler } =
+            useDropdown(props);
 
         return {
             // Refs
@@ -68,7 +69,8 @@ export default defineComponent({
             isActive,
 
             // Handlers
-            buttonClickHandler
+            buttonClickHandler,
+            menuButtonClickHandler
         };
     }
 });

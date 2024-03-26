@@ -31,15 +31,25 @@ import { VuElIcon, VuElDropdownMenu, VuElDropdownMenuItem, VuElDropdownMenuButto
 // Functions
 import { VuFnText } from '../text';
 
-// Interfaces
-import type { DropdownMenuItemOptions } from '../../../interfaces';
-
 // Types
 import type { Placements } from '../../../types';
 import { PLACEMENTS } from '../../../types';
 
+// Interfaces
+import type { DropdownMenuItemOptions } from '../../../interfaces';
+
+// Composables
+import { useDropdown } from '../../../composables';
+
 export default defineComponent({
     name: 'vu-fn-dropdown-menu',
+    components: {
+        VuElIcon,
+        VuElDropdownMenu,
+        VuElDropdownMenuItem,
+        VuElDropdownMenuButton,
+        VuFnText
+    },
     props: {
         /**
          * 드롭다운 데이터
@@ -73,18 +83,9 @@ export default defineComponent({
             type: Number
         }
     },
-    components: {
-        VuElIcon,
-        VuElDropdownMenu,
-        VuElDropdownMenuItem,
-        VuElDropdownMenuButton,
-        VuFnText
-    },
-    setup(props, { emit }) {
-        // 메뉴 버튼 클릭
-        function menuButtonClickHandler(index: number): void {
-            emit('on-menu-button-click', index);
-        }
+    setup(props) {
+        // Composables
+        const { menuButtonClickHandler } = useDropdown(props);
 
         return {
             // Handlers

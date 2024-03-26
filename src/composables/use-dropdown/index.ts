@@ -7,8 +7,8 @@ import { DROPDOWN } from '../../constants';
 import type { DropdownProps, DropdownMenuItemOptions } from '../../interfaces';
 
 // Types
-import type { DropdownSizes, Placements } from '../../types';
-import { DROPDOWN_SIZES, PLACEMENTS } from '../../types';
+import type { DropdownTypes, DropdownSizes, Placements } from '../../types';
+import { DROPDOWN_TYPES, DROPDOWN_SIZES, PLACEMENTS } from '../../types';
 
 // Library
 import { onClickOutside } from '@vueuse/core';
@@ -25,9 +25,22 @@ export const dropdownProps = {
         default: () => [] as Array<DropdownMenuItemOptions>
     },
     /**
+     * 드롭다운 유형
+     *
+     * @type {DropdownTypes}
+     * @default 'filled'
+     */
+    type: {
+        type: String as PropType<DropdownTypes>,
+        default: DROPDOWN_TYPES.filled,
+        validator: (value: string): value is DropdownTypes => {
+            return Object.values(DROPDOWN_TYPES).includes(value as DropdownTypes);
+        }
+    },
+    /**
      * 드롭다운 크기
      *
-     * @type {String}
+     * @type {DropdownSizes}
      * @default 'sm'
      */
     size: {
@@ -129,6 +142,13 @@ export function useDropdown(props: DropdownProps) {
         instance?.emit('on-button-click');
     }
 
+    // 메뉴 버튼 클릭
+    function menuButtonClickHandler(index: number): void {
+        isActive.value = false;
+
+        instance?.emit('on-menu-button-click', index);
+    }
+
     // 외부 클릭
     onClickOutside(rootRef, () => {
         isActive.value = false;
@@ -148,6 +168,7 @@ export function useDropdown(props: DropdownProps) {
         isActive,
 
         // Handlers
-        buttonClickHandler
+        buttonClickHandler,
+        menuButtonClickHandler
     };
 }

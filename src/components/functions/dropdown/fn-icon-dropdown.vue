@@ -26,7 +26,7 @@ import { defineComponent, computed } from 'vue';
 import { VuElDropdown, VuElDropdownButton } from '../../elements';
 
 // Functions
-import { VuFnDropdownMenu } from '../dropdown';
+import VuFnDropdownMenu from './fn-dropdown-menu.vue';
 
 // Constants
 import { ICON_DROPDOWN } from '../../../constants';
@@ -66,7 +66,8 @@ export default defineComponent({
     },
     setup(props) {
         // Composables
-        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler } = useDropdown(props);
+        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler, menuButtonClickHandler } =
+            useDropdown(props);
 
         // 버튼 아이콘
         const buttonIcon = computed(() => {
@@ -86,7 +87,8 @@ export default defineComponent({
             isActive,
 
             // Handlers
-            buttonClickHandler
+            buttonClickHandler,
+            menuButtonClickHandler
         };
     }
 });
