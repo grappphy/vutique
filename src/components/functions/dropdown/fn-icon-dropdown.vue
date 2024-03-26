@@ -9,27 +9,12 @@
 
         <!-- 메뉴 -->
         <template #menu>
-            <vu-el-dropdown-menu v-show="isActive" :placement="placement">
-                <!-- 메뉴 아이템 -->
-                <vu-el-dropdown-menu-item
-                    v-for="(item, index) in data"
-                    :is-active="index === selectedIndex"
-                    :key="`vu-dropdown-menu-item-${index}`"
-                >
-                    <!-- 메뉴 버튼 -->
-                    <vu-el-dropdown-menu-button @on-click="menuButtonClickHandler(index)">
-                        <!-- 메뉴 아이콘 -->
-                        <template #icon="{ defaultClass }">
-                            <vu-el-icon :class="defaultClass" :size="'20'" :icon="item.icon" />
-                        </template>
-
-                        <!-- 메뉴 텍스트 -->
-                        <template #text="{ defaultClass }">
-                            <vu-fn-text :class="defaultClass" :size="'14'" :content="item.text" />
-                        </template>
-                    </vu-el-dropdown-menu-button>
-                </vu-el-dropdown-menu-item>
-            </vu-el-dropdown-menu>
+            <vu-fn-dropdown-menu
+                v-show="isActive"
+                :data="data"
+                :selected-index="selectedIndex"
+                :placement="placement"
+            />
         </template>
     </vu-el-dropdown>
 </template>
@@ -38,33 +23,31 @@
 import { defineComponent, computed } from 'vue';
 
 // Elements
-import {
-    VuElIcon,
-    VuElDropdown,
-    VuElDropdownButton,
-    VuElDropdownMenu,
-    VuElDropdownMenuItem,
-    VuElDropdownMenuButton
-} from '../../elements';
+import { VuElDropdown, VuElDropdownButton } from '../../elements';
 
 // Functions
-import { VuFnText } from '../text';
+import { VuFnDropdownMenu } from '../dropdown';
 
 // Constants
 import { ICON_DROPDOWN } from '../../../constants';
 
-// Extends
+// Composables
 import { useDropdown, dropdownProps } from '../../../composables';
 
 export default defineComponent({
-    name: 'vu-fn-filled-dropdown',
+    name: 'vu-fn-icon-dropdown',
+    components: {
+        VuElDropdown,
+        VuElDropdownButton,
+        VuFnDropdownMenu
+    },
     props: {
         ...dropdownProps,
         /**
          * 활성화 버튼 아이콘
          *
          * @type {String}
-         * @default 'ic-squarestyle-option-vertical-line'
+         * @default 'ic-v2-navigation-option-vertical-fill'
          */
         activeButtonIcon: {
             type: String,
@@ -74,25 +57,16 @@ export default defineComponent({
          * 비활성화 버튼 아이콘
          *
          * @type {String}
-         * @default 'ic-squarestyle-option-vertical-line'
+         * @default 'ic-v2-navigation-option-vertical-fill'
          */
         inactiveButtonIcon: {
             type: String,
             default: ICON_DROPDOWN.INACTIVE_BUTTON_ICON
         }
     },
-    components: {
-        VuElIcon,
-        VuElDropdown,
-        VuElDropdownButton,
-        VuElDropdownMenu,
-        VuElDropdownMenuItem,
-        VuElDropdownMenuButton,
-        VuFnText
-    },
     setup(props) {
-        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler, menuButtonClickHandler } =
-            useDropdown(props);
+        // Composables
+        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler } = useDropdown(props);
 
         // 버튼 아이콘
         const buttonIcon = computed(() => {
@@ -100,13 +74,19 @@ export default defineComponent({
         });
 
         return {
+            // Refs
             rootRef,
+
+            // Values
             buttonText,
             buttonArrow,
             buttonIcon,
+
+            // States
             isActive,
-            buttonClickHandler,
-            menuButtonClickHandler
+
+            // Handlers
+            buttonClickHandler
         };
     }
 });

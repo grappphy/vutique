@@ -19,27 +19,12 @@
 
         <!-- 메뉴 -->
         <template #menu>
-            <vu-el-dropdown-menu v-show="isActive" :placement="placement">
-                <!-- 메뉴 아이템 -->
-                <vu-el-dropdown-menu-item
-                    v-for="(item, index) in data"
-                    :is-active="index === selectedIndex"
-                    :key="`vu-dropdown-menu-item-${index}`"
-                >
-                    <!-- 메뉴 버튼 -->
-                    <vu-el-dropdown-menu-button @on-click="menuButtonClickHandler(index)">
-                        <!-- 메뉴 아이콘 -->
-                        <template #icon="{ defaultClass }">
-                            <vu-el-icon :class="defaultClass" :size="'20'" :icon="item.icon" />
-                        </template>
-
-                        <!-- 메뉴 텍스트 -->
-                        <template #text="{ defaultClass }">
-                            <vu-fn-text :class="defaultClass" :size="'14'" :content="item.text" />
-                        </template>
-                    </vu-el-dropdown-menu-button>
-                </vu-el-dropdown-menu-item>
-            </vu-el-dropdown-menu>
+            <vu-fn-dropdown-menu
+                v-show="isActive"
+                :data="data"
+                :selected-index="selectedIndex"
+                :placement="placement"
+            />
         </template>
     </vu-el-dropdown>
 </template>
@@ -48,44 +33,42 @@
 import { defineComponent } from 'vue';
 
 // Elements
-import {
-    VuElIcon,
-    VuElDropdown,
-    VuElDropdownButton,
-    VuElDropdownMenu,
-    VuElDropdownMenuItem,
-    VuElDropdownMenuButton
-} from '../../elements';
+import { VuElDropdown, VuElDropdownButton } from '../../elements';
 
 // Functions
+import { VuFnDropdownMenu } from '../dropdown';
 import { VuFnText } from '../text';
 
-// Extends
+// Composables
 import { useDropdown, dropdownProps } from '../../../composables';
 
 export default defineComponent({
     name: 'vu-fn-filled-dropdown',
-    props: dropdownProps,
     components: {
-        VuElIcon,
         VuElDropdown,
         VuElDropdownButton,
-        VuElDropdownMenu,
-        VuElDropdownMenuItem,
-        VuElDropdownMenuButton,
+
+        VuFnDropdownMenu,
         VuFnText
     },
+    props: dropdownProps,
     setup(props) {
-        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler, menuButtonClickHandler } =
-            useDropdown(props);
+        // Composables
+        const { rootRef, buttonText, buttonArrow, isActive, buttonClickHandler } = useDropdown(props);
 
         return {
+            // Refs
             rootRef,
+
+            // Values
             buttonText,
             buttonArrow,
+
+            // States
             isActive,
-            buttonClickHandler,
-            menuButtonClickHandler
+
+            // Handlers
+            buttonClickHandler
         };
     }
 });

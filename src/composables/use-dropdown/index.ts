@@ -129,13 +129,6 @@ export function useDropdown(props: DropdownProps) {
         instance?.emit('on-button-click');
     }
 
-    // 메뉴 버튼 클릭
-    function menuButtonClickHandler(index: number): void {
-        isActive.value = false;
-
-        instance?.emit('on-menu-button-click', index);
-    }
-
     // 외부 클릭
     onClickOutside(rootRef, () => {
         isActive.value = false;
@@ -155,7 +148,6 @@ export function useDropdown(props: DropdownProps) {
         isActive,
 
         // Handlers
-        buttonClickHandler,
-        menuButtonClickHandler
+        buttonClickHandler
     };
 }
