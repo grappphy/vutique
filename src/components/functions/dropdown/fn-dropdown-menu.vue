@@ -26,10 +26,13 @@
 import { defineComponent, PropType } from 'vue';
 
 // Elements
-import { VuElIcon, VuElDropdownMenu, VuElDropdownMenuItem, VuElDropdownMenuButton } from '../../elements';
+import { VuElDropdownMenu, VuElDropdownMenuItem, VuElDropdownMenuButton, VuElIcon } from '../../elements';
 
 // Functions
 import { VuFnText } from '../text';
+
+// Composables
+import { useDropdown } from '../../../composables';
 
 // Types
 import type { Placements } from '../../../types';
@@ -38,16 +41,13 @@ import { PLACEMENTS } from '../../../types';
 // Interfaces
 import type { DropdownMenuItemOptions } from '../../../interfaces';
 
-// Composables
-import { useDropdown } from '../../../composables';
-
 export default defineComponent({
     name: 'vu-fn-dropdown-menu',
     components: {
-        VuElIcon,
         VuElDropdownMenu,
         VuElDropdownMenuItem,
         VuElDropdownMenuButton,
+        VuElIcon,
         VuFnText
     },
     props: {

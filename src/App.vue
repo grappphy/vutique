@@ -1,9 +1,17 @@
 <template>
     <vu-el-container>
         <div style="position: relative">
-            <vu-fn-dropdown :data="dropdownData" :selected-index="0" />
+            <vu-fn-dropdown
+                @on-menu-button-click="menuButtonClickHandler"
+                :data="dropdownData"
+                :selected-index="selectedIndex"
+            />
 
-            <vu-fn-icon-dropdown :data="dropdownData" />
+            <vu-fn-icon-dropdown
+                @on-menu-button-click="menuButtonClickHandler"
+                :data="dropdownData"
+                :selected-index="selectedIndex"
+            />
         </div>
     </vu-el-container>
 </template>
@@ -24,13 +32,25 @@ export default defineComponent({
         VuFnIconDropdown
     },
     setup() {
+        const selectedIndex = ref(0);
+
         const dropdownData = ref([
             {
-                text: '드롭다운'
+                text: '드롭다운 1'
+            },
+            {
+                text: '드롭다운 2'
             }
         ]);
+
+        function menuButtonClickHandler(index: number) {
+            selectedIndex.value = index;
+        }
+
         return {
-            dropdownData
+            selectedIndex,
+            dropdownData,
+            menuButtonClickHandler
         };
     }
 });

@@ -11,6 +11,7 @@
         <template #menu>
             <vu-fn-dropdown-menu
                 v-show="isActive"
+                @on-menu-button-click="menuButtonClickHandler"
                 :data="data"
                 :selected-index="selectedIndex"
                 :placement="placement"
